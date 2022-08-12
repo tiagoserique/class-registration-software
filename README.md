@@ -5,7 +5,7 @@
 
     * Auxiliar o aluno no seu pedido de quebra de barreira
     * verificar a situação do aluno
-    * gerar um arquivo texto vom o pedido de quebra e seus dados
+    * gerar um arquivo texto com o pedido de quebra e seus dados
 
 ## Funções do sistema
 
