@@ -1,6 +1,9 @@
-package Materia;
+package materia;
 
-public class Materia{
+import java.io.Serializable;
+
+public class Materia implements Serializable{
+  private static final long serialVersionUID = 0;
   private String codCurso;
   private int numVersao;
   private String descrEstrutura;
