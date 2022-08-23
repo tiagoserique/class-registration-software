@@ -13,14 +13,14 @@ public class Materia implements Serializable{
   private int periodo;
   private int numHoras;
   private String tipoDisci;
-  private String situVersao;
   private int chTotal;
+  private String situacao;
 
   public String toString(){
     return (this.codCurso + "," + this.numVersao + "," + this.descrEstrutura + "," +
         this.codDisci + "," + this.nomeUnidade + "," + this.nomeDisci + "," + 
         this.periodo + "," + this.numHoras + "," + this.tipoDisci + "," + 
-        this.situVersao + "," + this.chTotal);
+        this.situacao + "," + this.chTotal);
   }
   //getters
   public String getCodCurso()       { return codCurso;       }
@@ -32,7 +32,7 @@ public class Materia implements Serializable{
   public int    getPeriodo()        { return periodo;        }
   public int    getNumHoras()       { return numHoras;       }
   public String getTipoDisci()      { return tipoDisci;      }
-  public String getSituVersao()     { return situVersao;     }
+  public String getSituacao()       { return situacao;       }
   public int    getChTotal()        { return chTotal;        }
   //setters
   public void setCodCurso      (String codCurso)       { this.codCurso=codCurso;             }
@@ -44,6 +44,6 @@ public class Materia implements Serializable{
   public void setPeriodo       (int periodo)           { this.periodo=periodo;               }
   public void setNumHoras      (int numHoras)          { this.numHoras=numHoras;             }
   public void setTipoDisci     (String tipoDisci)      { this.tipoDisci=tipoDisci;           }
-  public void setSituVersao    (String situVersao)     { this.situVersao=situVersao;         }
+  public void setSituacao      (String situacao)       { this.situVersao=situVersao;         }
   public void setChTotal       (int chTotal)           { this.chTotal=chTotal;               }
 }

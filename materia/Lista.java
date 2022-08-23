@@ -18,6 +18,18 @@ public class Lista<T extends Serializable> implements Iterator<T>{
     atual = 0;
   }
 
+  public void insere(T elemento){
+    lista.add(elemento);
+  }
+
+  public void insere(int index, T elemento){
+    lista.add(index, elemento);
+  }
+
+  public boolean remove(T elemento){
+    return lista.remove(elemento);
+  }
+
   public boolean hasNext(){
     if(atual < 0 || lista.size() <= atual) return false;
     return true;
