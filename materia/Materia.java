@@ -44,6 +44,6 @@ public class Materia implements Serializable{
   public void setPeriodo       (int periodo)           { this.periodo=periodo;               }
   public void setNumHoras      (int numHoras)          { this.numHoras=numHoras;             }
   public void setTipoDisci     (String tipoDisci)      { this.tipoDisci=tipoDisci;           }
-  public void setSituacao      (String situacao)       { this.situVersao=situVersao;         }
+  public void setSituacao      (String situacao)       { this.situacao=situacao;             }
   public void setChTotal       (int chTotal)           { this.chTotal=chTotal;               }
 }
