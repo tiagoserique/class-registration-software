@@ -8,8 +8,5 @@ all: $(BINDIR)/$(MAIN).class
 run: $(BINDIR)/$(MAIN).class
 	@ $(RUN) view.$(MAIN)
 
-$(BINDIR)/$(MAIN).class: $(MAIN).java $(BINDIR)/TelaEstado.class $(BINDIR)/TelaSolicitar.class
-	$(CC) $(MAIN).java
-
-$(BINDIR)/%.class: ./%.java
-	$(CC) $^
+$(BINDIR)/$(MAIN).class: $(MAIN).java TelaEstado.java TelaSolicitar.java
+	$(CC) $(MAIN).java TelaEstado.java TelaSolicitar.java
