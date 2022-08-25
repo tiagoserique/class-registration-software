@@ -34,6 +34,7 @@ public class TelaInicial extends JFrame implements ActionListener{
     this.add(bSolicitarMaterias);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setTitle("Quebra de barreiras");
+    this.pack();
     this.setVisible(true);
   }
 
