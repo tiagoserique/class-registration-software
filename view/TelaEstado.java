@@ -13,12 +13,28 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import java.util.Vector;
+
+import materia.Materia;
+import model.MateriaHistorico;
+
 public class TelaEstado extends JFrame implements ActionListener{
 
   private JPanel botoes;
 
   private Botao bMenu;
   private TelaInicial inicio;
+
+  
+  // porcentagem de aprovacao do ultimo periodo
+  private Double porcentAprovacao;
+  // quantidade de reprovacao do ultimo periodo
+  private int quantidadeReprovacaoFalta;
+  // lista de materias que faltam para passar a barreira
+  private Vector<Materia> materiasBarreira;
+  // ofertadas e ainda nao cursadas, ou nao aprovadas, por periodo
+  private Vector<Vector<MateriaHistorico>> materiasCursadas;
+
 
   private static TelaEstado instancia = null;
 
@@ -67,5 +83,32 @@ public class TelaEstado extends JFrame implements ActionListener{
       this.setVisible(false);
       inicio.setVisible(true);
     }
+  }
+
+
+  public Double getPorcentAprovacao(){ 
+    return porcentAprovacao; 
+  }
+  public int getQuantidadeReprovacaoFalta(){ 
+    return quantidadeReprovacaoFalta; 
+  }
+  public Vector<Materia> getMateriasBarreira(){ 
+    return materiasBarreira; 
+  }
+  public Vector<Vector<MateriaHistorico>> getMateriasCursadas() {
+    return materiasCursadas;
+  }
+  
+  public void setPorcentAprovacao(Double porcentAprovacao){
+    this.porcentAprovacao = porcentAprovacao; 
+  }
+  public void setQuantidadeReprovacaoFalta(int quantidadeReprovacaoFalta){ 
+    this.quantidadeReprovacaoFalta = quantidadeReprovacaoFalta; 
+  }
+  public void setMateriasBarreira(Vector<Materia> materiasBarreira){ 
+    this.materiasBarreira = materiasBarreira; 
+  }
+  public void setMateriasCursadas(Vector<Vector<MateriaHistorico>> materiasCursadas) {
+    this.materiasCursadas = materiasCursadas;
   }
 }

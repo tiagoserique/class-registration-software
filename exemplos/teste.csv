@@ -1,0 +1,155 @@
+COD_CURSO;NUM_VERSAO;DESCR_ESTRUTURA;COD_DISCIPLINA;NOME_UNIDADE;NOME_DISCIPLINA;PERIODO_IDEAL;NUM_HORAS;TIPO_DISCIPLINA;CH_TOTAL;DESCR_SITUACAO
+21A;2019;Est�gio Supervisionado Obrigat�rio;CI1100;Curso de Ci�ncia da Computa��o - Bacharelado;EST�GIO OBRIGAT�RIO;;220;Est�gio Curricular;220;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CE009;Curso de Ci�ncia da Computa��o - Bacharelado;INTRODU��O � ESTAT�STICA;3;60;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1001;Curso de Ci�ncia da Computa��o - Bacharelado;PROGRAMA��O I;2;60;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1002;Curso de Ci�ncia da Computa��o - Bacharelado;PROGRAMA��O II;3;60;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1003;Curso de Ci�ncia da Computa��o - Bacharelado;INTRODU��O � CI�NCIA DA COMPUTA��O;1;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1003;Curso de Ci�ncia da Computa��o - Bacharelado;INTRODU��O � CI�NCIA DA COMPUTA��O;1;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1005;Curso de Ci�ncia da Computa��o - Bacharelado;QUALIDADE DE SOFTWARE;8;45;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1005;Curso de Ci�ncia da Computa��o - Bacharelado;QUALIDADE DE SOFTWARE;8;15;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1007;Curso de Ci�ncia da Computa��o - Bacharelado;SEGURAN�A COMPUTACIONAL;7;44;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1007;Curso de Ci�ncia da Computa��o - Bacharelado;SEGURAN�A COMPUTACIONAL;7;16;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1055;Curso de Ci�ncia da Computa��o - Bacharelado;ALGORITMOS E ESTRUTURA DE DADOS I;1;20;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1055;Curso de Ci�ncia da Computa��o - Bacharelado;ALGORITMOS E ESTRUTURA DE DADOS I;1;40;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1056;Curso de Ci�ncia da Computa��o - Bacharelado;ALGORITMOS E ESTRUTURA DE DADOS II;2;20;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1056;Curso de Ci�ncia da Computa��o - Bacharelado;ALGORITMOS E ESTRUTURA DE DADOS II;2;40;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1057;Curso de Ci�ncia da Computa��o - Bacharelado;ALGORITMOS E ESTRUTURAS DE DADOS III;3;20;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1057;Curso de Ci�ncia da Computa��o - Bacharelado;ALGORITMOS E ESTRUTURAS DE DADOS III;3;40;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1058;Curso de Ci�ncia da Computa��o - Bacharelado;REDE DE COMPUTADORES I;5;44;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1058;Curso de Ci�ncia da Computa��o - Bacharelado;REDE DE COMPUTADORES I;5;16;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1059;Curso de Ci�ncia da Computa��o - Bacharelado;INTRODU��O � TEORIA DA COMPUTA��O;4;45;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1059;Curso de Ci�ncia da Computa��o - Bacharelado;INTRODU��O � TEORIA DA COMPUTA��O;4;15;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1061;Curso de Ci�ncia da Computa��o - Bacharelado;REDES DE COMPUTADORES II;6;44;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1061;Curso de Ci�ncia da Computa��o - Bacharelado;REDES DE COMPUTADORES II;6;16;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1062;Curso de Ci�ncia da Computa��o - Bacharelado;PARADIGMAS DE PROGRAMA��O;4;20;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1062;Curso de Ci�ncia da Computa��o - Bacharelado;PARADIGMAS DE PROGRAMA��O;4;40;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1064;Curso de Ci�ncia da Computa��o - Bacharelado;SOFTWARE B�SICO;4;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1064;Curso de Ci�ncia da Computa��o - Bacharelado;SOFTWARE B�SICO;4;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1065;Curso de Ci�ncia da Computa��o - Bacharelado;ALGORITMOS E TEORIA DOS GRAFOS;5;45;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1065;Curso de Ci�ncia da Computa��o - Bacharelado;ALGORITMOS E TEORIA DOS GRAFOS;5;15;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1068;Curso de Ci�ncia da Computa��o - Bacharelado;CIRCUITOS DIGITAIS;1;40;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1068;Curso de Ci�ncia da Computa��o - Bacharelado;CIRCUITOS DIGITAIS;1;20;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1162;Curso de Ci�ncia da Computa��o - Bacharelado;ENGENHARIA DE REQUISITOS;5;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1162;Curso de Ci�ncia da Computa��o - Bacharelado;ENGENHARIA DE REQUISITOS;5;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1163;Curso de Ci�ncia da Computa��o - Bacharelado;DESIGN DE SOFTWARE;6;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1163;Curso de Ci�ncia da Computa��o - Bacharelado;DESIGN DE SOFTWARE;6;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1164;Curso de Ci�ncia da Computa��o - Bacharelado;INTRODU��O � COMPUTA��O CIENT�FICA;4;20;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1164;Curso de Ci�ncia da Computa��o - Bacharelado;INTRODU��O � COMPUTA��O CIENT�FICA;4;40;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1165;Curso de Ci�ncia da Computa��o - Bacharelado;AN�LISE DE ALGORITMOS;4;50;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1165;Curso de Ci�ncia da Computa��o - Bacharelado;AN�LISE DE ALGORITMOS;4;10;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1209;Curso de Ci�ncia da Computa��o - Bacharelado;INTELIG�NCIA ARTIFICIAL;6;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1209;Curso de Ci�ncia da Computa��o - Bacharelado;INTELIG�NCIA ARTIFICIAL;6;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1210;Curso de Ci�ncia da Computa��o - Bacharelado;PROJETOS DIGITAIS E MICROPROCESSADORES;2;40;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1210;Curso de Ci�ncia da Computa��o - Bacharelado;PROJETOS DIGITAIS E MICROPROCESSADORES;2;20;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1211;Curso de Ci�ncia da Computa��o - Bacharelado;CONSTRU��O DE COMPILADORES;8;40;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1211;Curso de Ci�ncia da Computa��o - Bacharelado;CONSTRU��O DE COMPILADORES;8;20;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1212;Curso de Ci�ncia da Computa��o - Bacharelado;ARQUITETURA DE COMPUTADORES;3;40;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1212;Curso de Ci�ncia da Computa��o - Bacharelado;ARQUITETURA DE COMPUTADORES;3;20;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1215;Curso de Ci�ncia da Computa��o - Bacharelado;SISTEMAS OPERACIONAIS;5;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1215;Curso de Ci�ncia da Computa��o - Bacharelado;SISTEMAS OPERACIONAIS;5;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1218;Curso de Ci�ncia da Computa��o - Bacharelado;BANCO DE DADOS;6;48;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1218;Curso de Ci�ncia da Computa��o - Bacharelado;BANCO DE DADOS;6;12;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1221;Curso de Ci�ncia da Computa��o - Bacharelado;ENGENHARIA DE SOFTWARE;7;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1221;Curso de Ci�ncia da Computa��o - Bacharelado;ENGENHARIA DE SOFTWARE;7;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1237;Curso de Ci�ncia da Computa��o - Bacharelado;MATEM�TICA DISCRETA;3;45;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1237;Curso de Ci�ncia da Computa��o - Bacharelado;MATEM�TICA DISCRETA;3;15;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1238;Curso de Ci�ncia da Computa��o - Bacharelado;OTIMIZA��O;5;45;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1238;Curso de Ci�ncia da Computa��o - Bacharelado;OTIMIZA��O;5;15;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1316;Curso de Ci�ncia da Computa��o - Bacharelado;PROGRAMA��O PARALELA;6;20;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1316;Curso de Ci�ncia da Computa��o - Bacharelado;PROGRAMA��O PARALELA;6;40;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1350;Curso de Ci�ncia da Computa��o - Bacharelado;INTERA��O HUMANO-COMPUTADOR;4;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CI1350;Curso de Ci�ncia da Computa��o - Bacharelado;INTERA��O HUMANO-COMPUTADOR;4;30;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CMA111;Curso de Ci�ncia da Computa��o - Bacharelado;C�LCULO 1A;1;90;Obrigat�ria;90;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CMA211;Curso de Ci�ncia da Computa��o - Bacharelado;C�LCULO 2A;2;90;Obrigat�ria;90;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CM303;Curso de Ci�ncia da Computa��o - Bacharelado;INTRODU��O � GEOMETRIA ANAL�TICA E �LGEBRA LINEAR;2;60;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos obrigat�rios;CM304;Curso de Ci�ncia da Computa��o - Bacharelado;COMPLEMENTOS DE MATEM�TICA;1;60;Obrigat�ria;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI087;Curso de Ci�ncia da Computa��o - Bacharelado;TOPICOS EM BANCO DE DADOS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI087;Curso de Ci�ncia da Computa��o - Bacharelado;TOPICOS EM BANCO DE DADOS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1008;Curso de Ci�ncia da Computa��o - Bacharelado;INTRODU��O A SISTEMAS EMBARCADOS;;20;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1008;Curso de Ci�ncia da Computa��o - Bacharelado;INTRODU��O A SISTEMAS EMBARCADOS;;40;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1009;Curso de Ci�ncia da Computa��o - Bacharelado;COMPUTA��O PARALELA COM GPUS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1009;Curso de Ci�ncia da Computa��o - Bacharelado;COMPUTA��O PARALELA COM GPUS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1010;Curso de Ci�ncia da Computa��o - Bacharelado;PROGRAMA��O WEB;;60;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1011;Curso de Ci�ncia da Computa��o - Bacharelado;RECONHECIMENTO DE PADR�ES;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1011;Curso de Ci�ncia da Computa��o - Bacharelado;RECONHECIMENTO DE PADR�ES;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1012;Curso de Ci�ncia da Computa��o - Bacharelado;ALGORITMOS ALEATORIZADOS;;60;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1013;Curso de Ci�ncia da Computa��o - Bacharelado;GRANDES IDEIAS DA COMPUTA��O TE�RICA;;60;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1014;Curso de Ci�ncia da Computa��o - Bacharelado;REDES SOCIAIS E ECON�MICAS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1014;Curso de Ci�ncia da Computa��o - Bacharelado;REDES SOCIAIS E ECON�MICAS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1015;Curso de Ci�ncia da Computa��o - Bacharelado;TESTE DE SOFTWARE;;60;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1016;Curso de Ci�ncia da Computa��o - Bacharelado;T�CNICAS EM MODELAGEM DE APLICA��ES;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1016;Curso de Ci�ncia da Computa��o - Bacharelado;T�CNICAS EM MODELAGEM DE APLICA��ES;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1017;Curso de Ci�ncia da Computa��o - Bacharelado;CRIPTOGRAFIA;;40;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1017;Curso de Ci�ncia da Computa��o - Bacharelado;CRIPTOGRAFIA;;20;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1020;Curso de Ci�ncia da Computa��o - Bacharelado;ROB�TICA M�VEL;;20;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1020;Curso de Ci�ncia da Computa��o - Bacharelado;ROB�TICA M�VEL;;40;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1021;Curso de Ci�ncia da Computa��o - Bacharelado;PROGRAMA��O DE DISPOSITIVOS M�VEIS;;8;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1021;Curso de Ci�ncia da Computa��o - Bacharelado;PROGRAMA��O DE DISPOSITIVOS M�VEIS;;52;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1022;Curso de Ci�ncia da Computa��o - Bacharelado;PROJETO DE SISTEMAS DIGITAIS;;40;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1022;Curso de Ci�ncia da Computa��o - Bacharelado;PROJETO DE SISTEMAS DIGITAIS;;20;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1023;Curso de Ci�ncia da Computa��o - Bacharelado;PROJETO DE SISTEMAS EMBARCADOS;;40;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1023;Curso de Ci�ncia da Computa��o - Bacharelado;PROJETO DE SISTEMAS EMBARCADOS;;20;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1025;Curso de Ci�ncia da Computa��o - Bacharelado;DISPOSITIVOS REPROGRAM�VEIS;;12;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1025;Curso de Ci�ncia da Computa��o - Bacharelado;DISPOSITIVOS REPROGRAM�VEIS;;48;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1026;Curso de Ci�ncia da Computa��o - Bacharelado;VIS�O COMPUTACIONAL E PERCEP��O;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1026;Curso de Ci�ncia da Computa��o - Bacharelado;VIS�O COMPUTACIONAL E PERCEP��O;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1028;Curso de Ci�ncia da Computa��o - Bacharelado;BIOMETRIA E VIGIL�NCIA POR VIS�O COMPUTACIONAL;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1028;Curso de Ci�ncia da Computa��o - Bacharelado;BIOMETRIA E VIGIL�NCIA POR VIS�O COMPUTACIONAL;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1084;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM TEORIA DOS GRAFOS;;45;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1084;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM TEORIA DOS GRAFOS;;15;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1086;Curso de Ci�ncia da Computa��o - Bacharelado;ARQUITETURAS DE ALTO DESEMPENHO;;35;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1086;Curso de Ci�ncia da Computa��o - Bacharelado;ARQUITETURAS DE ALTO DESEMPENHO;;25;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1087;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM BANCO DE DADOS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1087;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM BANCO DE DADOS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1088;Curso de Ci�ncia da Computa��o - Bacharelado;SISTEMAS DISTRIBU�DOS;;54;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1088;Curso de Ci�ncia da Computa��o - Bacharelado;SISTEMAS DISTRIBU�DOS;;6;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1090;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM ENGENHARIA DE SOFTWARE;;60;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1091;Curso de Ci�ncia da Computa��o - Bacharelado;AVALIA��O DE DESEMPENHO;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1091;Curso de Ci�ncia da Computa��o - Bacharelado;AVALIA��O DE DESEMPENHO;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1170;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM COMPUTA��O BIOINSPIRADA;;60;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1171;Curso de Ci�ncia da Computa��o - Bacharelado;APRENDIZADO DE M�QUINA;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1171;Curso de Ci�ncia da Computa��o - Bacharelado;APRENDIZADO DE M�QUINA;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1173;Curso de Ci�ncia da Computa��o - Bacharelado;COMPUTA��O GR�FICA;;12;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1173;Curso de Ci�ncia da Computa��o - Bacharelado;COMPUTA��O GR�FICA;;48;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1175;Curso de Ci�ncia da Computa��o - Bacharelado;OFICINA DE COMPUTA��O;;10;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1175;Curso de Ci�ncia da Computa��o - Bacharelado;OFICINA DE COMPUTA��O;;50;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1176;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM VIS�O COMPUTACIONAL;;50;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1176;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM VIS�O COMPUTACIONAL;;10;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1177;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM COMPUTA��O GR�FICA;;50;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1177;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM COMPUTA��O GR�FICA;;10;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1204;Curso de Ci�ncia da Computa��o - Bacharelado;INOVA��O TECNOL�GICA E GEST�O DE PROJETOS;;60;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1205;Curso de Ci�ncia da Computa��o - Bacharelado;ADMINISTRA��O DE PRODU��O PARA INFORM�TICA;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1205;Curso de Ci�ncia da Computa��o - Bacharelado;ADMINISTRA��O DE PRODU��O PARA INFORM�TICA;;10;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1205;Curso de Ci�ncia da Computa��o - Bacharelado;ADMINISTRA��O DE PRODU��O PARA INFORM�TICA;;10;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1205;Curso de Ci�ncia da Computa��o - Bacharelado;ADMINISTRA��O DE PRODU��O PARA INFORM�TICA;;10;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1219;Curso de Ci�ncia da Computa��o - Bacharelado;SISTEMAS AVAN�ADOS DE BANCO DE DADOS;;60;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1220;Curso de Ci�ncia da Computa��o - Bacharelado;TEORIA DE SISTEMAS;;40;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1220;Curso de Ci�ncia da Computa��o - Bacharelado;TEORIA DE SISTEMAS;;10;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1220;Curso de Ci�ncia da Computa��o - Bacharelado;TEORIA DE SISTEMAS;;10;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1311;Curso de Ci�ncia da Computa��o - Bacharelado;FUNDAMENTOS L�GICOS DA INTELIG�NCIA ARTIFICIAL;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1311;Curso de Ci�ncia da Computa��o - Bacharelado;FUNDAMENTOS L�GICOS DA INTELIG�NCIA ARTIFICIAL;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1315;Curso de Ci�ncia da Computa��o - Bacharelado;PROJETO DE SISTEMAS OPERACIONAIS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1315;Curso de Ci�ncia da Computa��o - Bacharelado;PROJETO DE SISTEMAS OPERACIONAIS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1338;Curso de Ci�ncia da Computa��o - Bacharelado;GEOMETRIA COMPUTACIONAL;;45;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1338;Curso de Ci�ncia da Computa��o - Bacharelado;GEOMETRIA COMPUTACIONAL;;15;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1339;Curso de Ci�ncia da Computa��o - Bacharelado;COMPLEXIDADE COMPUTACIONAL;;45;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1339;Curso de Ci�ncia da Computa��o - Bacharelado;COMPLEXIDADE COMPUTACIONAL;;15;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1351;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM INTERA��O HUMANO-COMPUTADOR;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1351;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM INTERA��O HUMANO-COMPUTADOR;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1352;Curso de Ci�ncia da Computa��o - Bacharelado;DESIGN DE SISTEMAS SOCIOT�CNICOS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1352;Curso de Ci�ncia da Computa��o - Bacharelado;DESIGN DE SISTEMAS SOCIOT�CNICOS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1355;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM ALGORITMOS;;45;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1355;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM ALGORITMOS;;15;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1360;Curso de Ci�ncia da Computa��o - Bacharelado;REDES M�VEIS;;40;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1360;Curso de Ci�ncia da Computa��o - Bacharelado;REDES M�VEIS;;20;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1365;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM REDES DE COMPUTADORES;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1365;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM REDES DE COMPUTADORES;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1366;Curso de Ci�ncia da Computa��o - Bacharelado;GERENCIAMENTO DE REDES DE COMPUTADORES;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1366;Curso de Ci�ncia da Computa��o - Bacharelado;GERENCIAMENTO DE REDES DE COMPUTADORES;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1367;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM SIMULA��O DE SISTEMAS COMPUTACIONAIS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1367;Curso de Ci�ncia da Computa��o - Bacharelado;T�PICOS EM SIMULA��O DE SISTEMAS COMPUTACIONAIS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1394;Curso de Ci�ncia da Computa��o - Bacharelado;PROCESSAMENTO DE IMAGENS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1394;Curso de Ci�ncia da Computa��o - Bacharelado;PROCESSAMENTO DE IMAGENS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI1397;Curso de Ci�ncia da Computa��o - Bacharelado;SISTEMAS TUTORES INTELIGENTES;;60;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI171;Curso de Ci�ncia da Computa��o - Bacharelado;APRENDIZADO DE M�QUINAS;;30;Optativa;60;ATIVA
+21A;2019;N�cleo de Conte�dos Optativos;CI171;Curso de Ci�ncia da Computa��o - Bacharelado;APRENDIZADO DE M�QUINAS;;30;Optativa;60;ATIVA
