@@ -8,22 +8,11 @@ import materia.Materia;
 import model.MateriaHistorico;
 
 public class TelaEstadoController extends Controller {
-
     private TelaEstado screen;
 
-    //  1 - Aprovado
-    //  2 - Reprovado por nota
-    //  3 - Reprovado por falta/frequencia
-    // 10 - Matricula
 
     public void executa(Object view){
         this.screen = (TelaEstado) view;
-
-        // - Mostrar matérias cursadas por período. 
-        // - Mostrar matérias que faltam cursar para barreira.
-        // - Mostrar dados de aprovação do último período (% de aprovação e 
-        // quantas matérias reprovou por falta).
-
 
         // =====================================================================
         // materias que ja foram cursadas de acordo com o periodo que foram 
