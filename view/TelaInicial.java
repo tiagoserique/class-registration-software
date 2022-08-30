@@ -1,13 +1,13 @@
 package view;
 
+import view.guiElements.Botao;
+
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,11 +17,9 @@ public class TelaInicial extends JFrame implements ActionListener{
 
   private JPanel botoes;
 
-  private JButton bEstadoMaterias;
-  private TelaEstado estadoMaterias;
+  private Botao bEstadoMaterias;
 
-  private JButton bSolicitarMaterias;
-  private TelaSolicitar solicitarMaterias;
+  private Botao bSolicitarMaterias;
 
   private Font fonte;
 
@@ -34,6 +32,7 @@ public class TelaInicial extends JFrame implements ActionListener{
   }
 
   private TelaInicial(){
+    this.setLocationRelativeTo(null);
     this.setLayout(new BorderLayout(10, 10));
     fonte = new Font("Hack", Font.BOLD, 16);
     fazBotoes();
@@ -56,19 +55,9 @@ public class TelaInicial extends JFrame implements ActionListener{
   }
 
   private void fazBotoes(){
-    bEstadoMaterias = new JButton("Estado das matérias");
-    bEstadoMaterias.addActionListener(this);
-    bEstadoMaterias.setFont(fonte);
-    bEstadoMaterias.setFocusable(false);
-    bEstadoMaterias.setBackground(new Color(0x44475a));
-    bEstadoMaterias.setForeground(new Color(0xf8f8f2));
+    bEstadoMaterias = new Botao("Estado das matérias", fonte, this);
 
-    bSolicitarMaterias = new JButton("Solicitar matérias");
-    bSolicitarMaterias.addActionListener(this);
-    bSolicitarMaterias.setFont(fonte);
-    bSolicitarMaterias.setFocusable(false);
-    bSolicitarMaterias.setBackground(new Color(0x44475a));
-    bSolicitarMaterias.setForeground(new Color(0xf8f8f2));
+    bSolicitarMaterias = new Botao("Solicitar matérias", fonte, this);
 
     botoes = new JPanel(new GridLayout(1, 2, 10, 10));
     botoes.add(bEstadoMaterias);
@@ -83,13 +72,16 @@ public class TelaInicial extends JFrame implements ActionListener{
   @Override
   public void actionPerformed(ActionEvent e){
     Object source = e.getSource();
-    this.setVisible(false);
+    JFrame proxTela;
     if(source == bEstadoMaterias){
-      estadoMaterias = TelaEstado.getInstance();
-      estadoMaterias.setVisible(true);
+      proxTela = TelaEstado.getInstance();
     } else if(source == bSolicitarMaterias){
-      solicitarMaterias = TelaSolicitar.getInstance();
-      solicitarMaterias.setVisible(true);
+      proxTela = TelaSolicitar.getInstance();
+    } else {
+      return;
     }
+    proxTela.setLocationRelativeTo(this);
+    this.setVisible(false);
+    proxTela.setVisible(true);
   }
 }
