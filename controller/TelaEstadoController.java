@@ -80,30 +80,15 @@ public class TelaEstadoController extends Controller {
     Vector<Vector<MateriaHistorico>> mC){ 
         Vector<Materia> matNaoCursadas = new Vector<Materia>();
 
-        for (int i = 0; i < mB.size(); i++){
-            String codBarreira = mB.get(i).getCodDisci();
+        for (int materia = 0; materia < mB.size(); materia++){
+            String codBarreira = mB.get(materia).getCodDisci();
 
-            for (int semestre = 0; semestre < mC.size(); semestre++){
-                for (int mat = 0; mat < mC.get(semestre).size(); mat++){
+            Boolean condition = jaFoiCursada(mC, codBarreira);
 
-                    String codCursada = mC.get(semestre).get(mat).getCodAtivCurric();
-                    String situacaoMateria = mC.get(semestre).get(mat).getSituacaoItem();
-
-                    Boolean fc1 = codBarreira.equals(codCursada);
-                    Boolean fc2 = situacaoMateria.equals(REP_NOTA) 
-                                || situacaoMateria.equals(REP_FALTA);
-
-                    if ( !fc1 ){ 
-                        matNaoCursadas.add(mB.get(i));
-                    }
-                    else if ( fc2 ){
-                        if ( !foiAprovadoDepois(mC, codCursada, semestre) ){
-                            matNaoCursadas.add(mB.get(i));
-                        }
-                    }
-
-                }
+            if ( !condition ){ 
+                matNaoCursadas.add(mB.get(materia));
             }
+
         }
 
         return matNaoCursadas;

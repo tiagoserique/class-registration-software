@@ -13,22 +13,19 @@ public class Controller {
     protected String MATRICULA = "10";
 
 
-    // checa se foi aprovado depois de ter sido reprovado
+    // checa se a materia ja foi cursada e o aluno aprovado
     // mC = materias cursadas
-    // semReprov = semestre da reprovacao
-    protected Boolean foiAprovadoDepois(Vector<Vector<MateriaHistorico>> mC, 
-    String codigo, int semReprov){
+    public Boolean jaFoiCursada(Vector<Vector<MateriaHistorico>> mC, String codigo){
+        for (int semestre = 0; semestre < mC.size(); semestre++){
+            for (int matCursada = 0; matCursada < mC.get(semestre).size(); matCursada++){
 
-        for (int semestre = semReprov + 1; semestre < mC.size(); semestre++){
-            for (int materia = 0; materia < mC.get(semestre).size(); materia++){
-                
-                String codCursada = mC.get(semestre).get(materia).getCodAtivCurric();
-                String situacaoMateria = mC.get(semestre).get(materia).getSituacaoItem();
+                String codCursada = mC.get(semestre).get(matCursada).getCodAtivCurric();
+                String situacaoMateria = mC.get(semestre).get(matCursada).getSituacaoItem();
 
-                Boolean fc1 = codCursada.equals(codigo);
-                Boolean fc2 = situacaoMateria.equals(APROVADO);
+                Boolean cond1 = codigo.equals(codCursada);
+                Boolean cond2 = situacaoMateria.equals(APROVADO);
 
-                if ( fc1 && fc2 ) return true;
+                if ( cond1 && cond2 ) return true;
 
             }
         }
