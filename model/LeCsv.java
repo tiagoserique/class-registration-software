@@ -1,4 +1,7 @@
-package materia;
+package model;
+
+import materia.Lista;
+import materia.Materia;
 
 public class LeCsv {
     public static void main (String[] args) {

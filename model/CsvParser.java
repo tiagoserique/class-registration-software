@@ -1,4 +1,7 @@
-package materia;
+package model;
+
+import materia.Lista;
+import materia.Materia;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

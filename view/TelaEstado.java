@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 import java.util.Vector;
 
 import materia.Materia;
-import model.MateriaHistorico;
+import materia.MateriaHistorico;
 
 public class TelaEstado extends JFrame implements ActionListener{
 

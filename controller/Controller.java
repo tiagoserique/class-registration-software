@@ -4,7 +4,7 @@ import java.util.Vector;
 
 // import materia.Materia;
 
-import model.MateriaHistorico;
+import materia.MateriaHistorico;
 
 public class Controller {
     protected String APROVADO  = "1";

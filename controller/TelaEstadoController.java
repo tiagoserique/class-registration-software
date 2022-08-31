@@ -5,7 +5,7 @@ import java.util.*;
 import view.TelaEstado;
 
 import materia.Materia;
-import model.MateriaHistorico;
+import materia.MateriaHistorico;
 
 public class TelaEstadoController extends Controller {
     private TelaEstado screen;
