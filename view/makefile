@@ -1,16 +1,17 @@
 CC = javac -cp ../bin -d ../bin
 RUN = java -cp ../bin
-MAIN = TelaInicial
+MAIN = Test
 BINDIR = ../bin/view
-SRCVIEW = $(MAIN).java TelaEstado.java TelaSolicitar.java
+SRCVIEW = TelaInicial.java TelaEstado.java TelaSolicitar.java
 GUI = guiElements
 GUIDIR = $(BINDIR)/$(GUI)
 BINGUI = $(GUIDIR)/Botao.class
 SRCGUI = $(GUI)/Botao.java
 
 all: $(BINDIR)/$(MAIN).class
+	$(CC) $(MAIN).java
 
-run: $(BINDIR)/$(MAIN).class
+run: all
 	@ $(RUN) view.$(MAIN)
 
 $(BINDIR)/$(MAIN).class: $(BINGUI) $(SRCVIEW)

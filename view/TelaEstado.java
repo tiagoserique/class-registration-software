@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -31,6 +32,9 @@ public class TelaEstado extends JFrame implements ActionListener{
   // tabela a ser mostrada
   private JTable materiasCursadasTabela;
   private JScrollPane materiasCursadasSp;
+
+  // quantidade de campos a serem exibidos para cada materia
+  private final int numeroCampos = 5;
 
   // porcentagem de aprovacao do ultimo periodo
   private Double porcentAprovacao;
@@ -71,8 +75,8 @@ public class TelaEstado extends JFrame implements ActionListener{
     this.add(botoes, BorderLayout.PAGE_END);
     this.add(titulo, BorderLayout.PAGE_START);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.pack();
     this.setTitle("Estado das matérias");
+    this.setMinimumSize(new Dimension(200,200));
   }
 
   // Cria o botão de voltar e coloca na tela
@@ -86,23 +90,53 @@ public class TelaEstado extends JFrame implements ActionListener{
   // Gera a tabela pra ser mostrada
   private void criaTabela(){
     // this.remove(materiasCursadasTabela);
+    if(materiasCursadas == null){
+      return;
+    }
     this.remove(materiasCursadasSp);
 
-    String colunas[] = {"Código", "Nome", "Media Final"};
-    String data[][]={ {"CI1389", "Materia doida", "0"} };
+    String colunas[] = {"Código", "Nome", "Media Final", "Período"};
+    String data[][]  = fromMateriaMatrizToStringMatriz(materiasCursadas);
     materiasCursadasTabela = new JTable(data, colunas);
     materiasCursadasSp = new JScrollPane(materiasCursadasTabela);
+    materiasCursadasSp.setFont(fonte);
+    materiasCursadasSp.setBounds(2, 2, 20, 20);
 
     // this.add(materiasCursadasTabela, BorderLayout.CENTER);
     this.add(materiasCursadasSp, BorderLayout.CENTER);
   }
 
   // Transforma materia em vetor de Strings
-  private String[] fromMateriaToString(MateriaHistorico mat){
-    String[] res = new String[3];
-    res[0] = mat.getSigla();
-    res[1] = mat.getSigla();
+  private String[] fromMateriaToString(MateriaHistorico mat, int periodo){
+    String[] res = new String[numeroCampos];
+    res[0] = mat.getCodCurso();
+    res[1] = mat.getNomeAtivCurri();
     res[2] = mat.getMediaFinal();
+    res[3] = mat.getChTotal();
+    res[4] = Integer.toString(periodo);
+    return res;
+  }
+
+  // Transforma
+  private String[][] fromMateriaMatrizToStringMatriz(Vector<Vector<MateriaHistorico>> mat){
+    // contar quantas materias tem na matriz
+    int amountMat = 0;
+
+    for(int i = 0; i < mat.size(); i++)
+      amountMat += mat.get(i).size();
+
+    String[][] res = new String[amountMat][numeroCampos];
+
+    // Marca qual posição deve ser alterada
+    int toChange = 0;
+
+    for(int i = 0; i < mat.size(); i++){
+      for(int j = 0; j < mat.get(i).size(); j++){
+        res[toChange] = fromMateriaToString(mat.get(i).get(j), i+1);
+        toChange++;
+      }
+    }
+
     return res;
   }
 
@@ -114,6 +148,7 @@ public class TelaEstado extends JFrame implements ActionListener{
       inicio.setLocationRelativeTo(this);
       this.setVisible(false);
       inicio.setVisible(true);
+      inicio.setBounds(this.getBounds());
     }
   }
 

@@ -1,8 +1,7 @@
 package view;
 
-import view.guiElements.Botao;
-
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -12,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import view.guiElements.Botao;
 
 public class TelaInicial extends JFrame implements ActionListener{
 
@@ -50,7 +51,7 @@ public class TelaInicial extends JFrame implements ActionListener{
     this.add(meio, BorderLayout.CENTER);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setTitle("Quebra de barreiras");
-    this.pack();
+    this.setMinimumSize(new Dimension(200,200));
     this.setVisible(true);
   }
 
@@ -81,7 +82,8 @@ public class TelaInicial extends JFrame implements ActionListener{
       return;
     }
     proxTela.setLocationRelativeTo(this);
-    this.setVisible(false);
     proxTela.setVisible(true);
+    proxTela.setBounds(this.getBounds());
+    this.setVisible(false);
   }
 }

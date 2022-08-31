@@ -2,6 +2,7 @@ package view;
 
 import view.guiElements.Botao;
 
+import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -48,8 +49,8 @@ public class TelaSolicitar extends JFrame implements ActionListener{
     this.add(titulo, BorderLayout.PAGE_START);
     this.add(meio, BorderLayout.CENTER);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.pack();
     this.setTitle("Estado das matérias");
+    this.setMinimumSize(new Dimension(200,200));
   }
 
   private void fazBotoes(){
@@ -64,6 +65,7 @@ public class TelaSolicitar extends JFrame implements ActionListener{
     if (e.getSource() == bMenu){
       inicio = TelaInicial.getInstance();
       inicio.setLocationRelativeTo(this);
+      inicio.setBounds(this.getBounds());
       this.setVisible(false);
       inicio.setVisible(true);
     }
