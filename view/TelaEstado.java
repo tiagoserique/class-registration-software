@@ -1,31 +1,37 @@
 package view;
 
-import view.guiElements.Botao;
-
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
-
-import java.util.Vector;
 
 import materia.Materia;
 import materia.MateriaHistorico;
+import view.guiElements.Botao;
 
 public class TelaEstado extends JFrame implements ActionListener{
 
+  // panel para organização de botões
   private JPanel botoes;
 
+  // botao para voltar para tela inicial
   private Botao bMenu;
+  // tela inicial
   private TelaInicial inicio;
 
-  
+  // tabela a ser mostrada
+  private JTable materiasCursadasTabela;
+  private JScrollPane materiasCursadasSp;
+
   // porcentagem de aprovacao do ultimo periodo
   private Double porcentAprovacao;
   // quantidade de reprovacao do ultimo periodo
@@ -40,12 +46,14 @@ public class TelaEstado extends JFrame implements ActionListener{
 
   private Font fonte;
 
+  // Para ser singleton
   public static synchronized TelaEstado getInstance(){
     if (instancia == null)
       instancia = new TelaEstado();
     return instancia;
   }
 
+  // Cria layout inicial da janela
   private TelaEstado(){
     this.setLayout(new BorderLayout(10,10));
     fonte = new Font("Hack", Font.BOLD, 16);
@@ -54,20 +62,20 @@ public class TelaEstado extends JFrame implements ActionListener{
     titulo.setHorizontalAlignment(SwingConstants.CENTER);
     titulo.setFont(fonte);
 
-    JLabel meio = new JLabel("PlaceHolder");
-    meio.setHorizontalAlignment(SwingConstants.CENTER);
-    meio.setFont(fonte);
+    materiasCursadasSp = new JScrollPane(materiasCursadasTabela);
+    this.add(materiasCursadasSp, BorderLayout.CENTER);
+    criaTabela();
 
     fazBotoes();
 
     this.add(botoes, BorderLayout.PAGE_END);
     this.add(titulo, BorderLayout.PAGE_START);
-    this.add(meio, BorderLayout.CENTER);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.pack();
     this.setTitle("Estado das matérias");
   }
 
+  // Cria o botão de voltar e coloca na tela
   private void fazBotoes(){
     bMenu = new Botao("Voltar", fonte, this);
 
@@ -75,6 +83,30 @@ public class TelaEstado extends JFrame implements ActionListener{
     botoes.add(bMenu);
   }
 
+  // Gera a tabela pra ser mostrada
+  private void criaTabela(){
+    // this.remove(materiasCursadasTabela);
+    this.remove(materiasCursadasSp);
+
+    String colunas[] = {"Código", "Nome", "Media Final"};
+    String data[][]={ {"CI1389", "Materia doida", "0"} };
+    materiasCursadasTabela = new JTable(data, colunas);
+    materiasCursadasSp = new JScrollPane(materiasCursadasTabela);
+
+    // this.add(materiasCursadasTabela, BorderLayout.CENTER);
+    this.add(materiasCursadasSp, BorderLayout.CENTER);
+  }
+
+  // Transforma materia em vetor de Strings
+  private String[] fromMateriaToString(MateriaHistorico mat){
+    String[] res = new String[3];
+    res[0] = mat.getSigla();
+    res[1] = mat.getSigla();
+    res[2] = mat.getMediaFinal();
+    return res;
+  }
+
+  // Função a ser executada quando aperta botão
   @Override
   public void actionPerformed(ActionEvent e){
     if (e.getSource() == bMenu){
@@ -98,7 +130,7 @@ public class TelaEstado extends JFrame implements ActionListener{
   public Vector<Vector<MateriaHistorico>> getMateriasCursadas() {
     return materiasCursadas;
   }
-  
+
   public void setPorcentAprovacao(Double porcentAprovacao){
     this.porcentAprovacao = porcentAprovacao; 
   }
@@ -110,5 +142,6 @@ public class TelaEstado extends JFrame implements ActionListener{
   }
   public void setMateriasCursadas(Vector<Vector<MateriaHistorico>> materiasCursadas) {
     this.materiasCursadas = materiasCursadas;
+    criaTabela();
   }
 }
