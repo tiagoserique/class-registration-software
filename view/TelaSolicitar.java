@@ -51,7 +51,7 @@ public class TelaSolicitar extends JFrame implements ActionListener{
     this.add(titulo, BorderLayout.PAGE_START);
     this.add(meio, BorderLayout.CENTER);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setTitle("Estado das matérias");
+    this.setTitle("Solicitar Matérias");
     this.setMinimumSize(new Dimension(500,300));
   }
 
