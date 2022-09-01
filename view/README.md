@@ -8,7 +8,7 @@
 
 - [X] Mostrar matérias cursadas por período.
 - [ ] Mostrar matérias que faltam cursar para barreira.
-- [ ] Mostrar dados de aprovação do último período (% de aprovação e quantas matérias reprovou por falta).
+- [X] Mostrar dados de aprovação do último período (% de aprovação e quantas matérias reprovou por falta).
 
 ## TelaSolicitar
 

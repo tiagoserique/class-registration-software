@@ -16,10 +16,12 @@ import javax.swing.SwingConstants;
 
 public class TelaSolicitar extends JFrame implements ActionListener{
 
+  // panel para organização de botões
   private JPanel botoes;
 
+  // botao para voltar para tela inicial
   private Botao bMenu;
-  private TelaInicial inicio;
+  private Botao bEstadoMaterias;
 
   private static TelaSolicitar instancia = null;
 
@@ -50,24 +52,33 @@ public class TelaSolicitar extends JFrame implements ActionListener{
     this.add(meio, BorderLayout.CENTER);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setTitle("Estado das matérias");
-    this.setMinimumSize(new Dimension(200,200));
+    this.setMinimumSize(new Dimension(500,300));
   }
 
   private void fazBotoes(){
-    bMenu = new Botao("Voltar", fonte, this);
+    bMenu = new Botao("Menu Inicial", fonte, this);
+    bEstadoMaterias = new Botao("Estado das matérias", fonte, this);
 
     botoes = new JPanel(new GridLayout(1, 2, 10, 10));
+    botoes.add(bEstadoMaterias);
     botoes.add(bMenu);
   }
 
+  // Função a ser executada quando aperta botão
   @Override
   public void actionPerformed(ActionEvent e){
-    if (e.getSource() == bMenu){
-      inicio = TelaInicial.getInstance();
-      inicio.setLocationRelativeTo(this);
-      inicio.setBounds(this.getBounds());
-      this.setVisible(false);
-      inicio.setVisible(true);
+    Object source = e.getSource();
+    JFrame proxTela;
+    if(source == bMenu){
+      proxTela = TelaInicial.getInstance();
+    } else if(source == bEstadoMaterias){
+      proxTela = TelaEstado.getInstance();
+    } else {
+      return;
     }
+    proxTela.setLocationRelativeTo(this);
+    proxTela.setBounds(this.getBounds());
+    this.setVisible(false);
+    proxTela.setVisible(true);
   }
 }

@@ -33,7 +33,6 @@ public class TelaInicial extends JFrame implements ActionListener{
   }
 
   private TelaInicial(){
-    this.setLocationRelativeTo(null);
     this.setLayout(new BorderLayout(10, 10));
     fonte = new Font("Hack", Font.BOLD, 16);
     fazBotoes();
@@ -51,7 +50,7 @@ public class TelaInicial extends JFrame implements ActionListener{
     this.add(meio, BorderLayout.CENTER);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setTitle("Quebra de barreiras");
-    this.setMinimumSize(new Dimension(200,200));
+    this.setMinimumSize(new Dimension(500,300));
     this.setVisible(true);
   }
 
@@ -82,8 +81,8 @@ public class TelaInicial extends JFrame implements ActionListener{
       return;
     }
     proxTela.setLocationRelativeTo(this);
-    proxTela.setVisible(true);
     proxTela.setBounds(this.getBounds());
     this.setVisible(false);
+    proxTela.setVisible(true);
   }
 }

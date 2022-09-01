@@ -26,24 +26,29 @@ public class TelaEstado extends JFrame implements ActionListener{
 
   // botao para voltar para tela inicial
   private Botao bMenu;
-  // tela inicial
-  private TelaInicial inicio;
+  private Botao bSolicitarMaterias;
 
-  // tabela a ser mostrada
+  // tabela de materias cursadas a ser mostrada
+  private JPanel materiasCursadasPanel;
+  private JLabel materiasCursadasLabel;
   private JTable materiasCursadasTabela;
   private JScrollPane materiasCursadasSp;
+  // ofertadas e ainda nao cursadas, ou nao aprovadas, por periodo
+  private Vector<Vector<MateriaHistorico>> materiasCursadas;
 
-  // quantidade de campos a serem exibidos para cada materia
-  private final int numeroCampos = 5;
-
+  // informações relacionadas a aprovação do ultimo periodo
+  private JPanel infoUltPeriodoPanel;
+  private JLabel infoUltPeriodoLabel;
   // porcentagem de aprovacao do ultimo periodo
   private Double porcentAprovacao;
   // quantidade de reprovacao do ultimo periodo
   private int quantidadeReprovacaoFalta;
+
+  // quantidade de campos a serem exibidos para cada materia
+  private final int numeroCampos = 5;
+
   // lista de materias que faltam para passar a barreira
   private Vector<Materia> materiasBarreira;
-  // ofertadas e ainda nao cursadas, ou nao aprovadas, por periodo
-  private Vector<Vector<MateriaHistorico>> materiasCursadas;
 
 
   private static TelaEstado instancia = null;
@@ -62,13 +67,12 @@ public class TelaEstado extends JFrame implements ActionListener{
     this.setLayout(new BorderLayout(10,10));
     fonte = new Font("Hack", Font.BOLD, 16);
 
-    JLabel titulo = new JLabel("Estado das matérias atuais");
-    titulo.setHorizontalAlignment(SwingConstants.CENTER);
+    JLabel titulo = new JLabel("Estado das matérias atuais", SwingConstants.CENTER);
     titulo.setFont(fonte);
 
-    materiasCursadasSp = new JScrollPane(materiasCursadasTabela);
-    this.add(materiasCursadasSp, BorderLayout.CENTER);
-    criaTabela();
+    criaTabelaCursadas();
+
+    criaInfoAprovacoes();
 
     fazBotoes();
 
@@ -76,34 +80,57 @@ public class TelaEstado extends JFrame implements ActionListener{
     this.add(titulo, BorderLayout.PAGE_START);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setTitle("Estado das matérias");
-    this.setMinimumSize(new Dimension(200,200));
+    this.setMinimumSize(new Dimension(500,300));
   }
 
   // Cria o botão de voltar e coloca na tela
   private void fazBotoes(){
-    bMenu = new Botao("Voltar", fonte, this);
+    bMenu = new Botao("MenuInicial", fonte, this);
+    bSolicitarMaterias = new Botao("Solicitar matérias", fonte, this);
 
     botoes = new JPanel(new GridLayout(1, 2, 10, 10));
+    botoes.add(bSolicitarMaterias);
     botoes.add(bMenu);
   }
 
+  private void criaTabelaCursadas(){
+    materiasCursadasPanel = new JPanel(new BorderLayout(10,10));
+
+    materiasCursadasLabel = new JLabel("Matérias ja cursadas:", SwingConstants.CENTER);
+    materiasCursadasLabel.setFont(fonte);
+    materiasCursadasPanel.add(materiasCursadasLabel, BorderLayout.PAGE_START);
+
+    materiasCursadasSp = new JScrollPane(materiasCursadasTabela);
+    materiasCursadasSp.setFont(fonte);
+    materiasCursadasPanel.add(materiasCursadasSp, BorderLayout.CENTER);
+
+    this.add(materiasCursadasPanel, BorderLayout.WEST);
+    updateTabelaCursadas();
+  }
+
   // Gera a tabela pra ser mostrada
-  private void criaTabela(){
+  private void updateTabelaCursadas(){
     // this.remove(materiasCursadasTabela);
     if(materiasCursadas == null){
       return;
     }
-    this.remove(materiasCursadasSp);
+    materiasCursadasPanel.remove(materiasCursadasSp);
 
     String colunas[] = {"Código", "Nome", "Media Final", "Carga Horária", "Período"};
     String data[][]  = fromMateriaMatrizToStringMatriz(materiasCursadas);
-    materiasCursadasTabela = new JTable(data, colunas);
+    materiasCursadasTabela = new JTable(data, colunas){
+        private static final long serialVersionUID = 1L;
+        public boolean isCellEditable(int row, int column) {                
+                return false;               
+        };
+    };
+    materiasCursadasTabela .setFont(fonte);
     materiasCursadasSp = new JScrollPane(materiasCursadasTabela);
     materiasCursadasSp.setFont(fonte);
     materiasCursadasSp.setBounds(2, 2, 20, 20);
 
-    // this.add(materiasCursadasTabela, BorderLayout.CENTER);
-    this.add(materiasCursadasSp, BorderLayout.CENTER);
+    // materiasCursadasPanel.add(materiasCursadasTabela, BorderLayout.CENTER);
+    materiasCursadasPanel.add(materiasCursadasSp, BorderLayout.CENTER);
   }
 
   // Transforma materia em vetor de Strings
@@ -117,7 +144,8 @@ public class TelaEstado extends JFrame implements ActionListener{
     return res;
   }
 
-  // Transforma
+
+  // Transforma matriz de matéria em matriz de string
   private String[][] fromMateriaMatrizToStringMatriz(Vector<Vector<MateriaHistorico>> mat){
     // contar quantas materias tem na matriz
     int amountMat = 0;
@@ -140,18 +168,45 @@ public class TelaEstado extends JFrame implements ActionListener{
     return res;
   }
 
+  private void criaInfoAprovacoes(){
+    infoUltPeriodoPanel = new JPanel(new BorderLayout(10, 10));
+    infoUltPeriodoPanel.setFont(fonte);
+
+    infoUltPeriodoLabel = new JLabel("Informações sobre o último período:", SwingConstants.CENTER);
+    infoUltPeriodoLabel.setFont(fonte);
+
+    this.add(infoUltPeriodoPanel, BorderLayout.CENTER);
+    updateInfoAprovacoes();
+  }
+
+  private void updateInfoAprovacoes(){
+    infoUltPeriodoPanel.removeAll();
+    infoUltPeriodoPanel.add(infoUltPeriodoLabel, BorderLayout.PAGE_START);
+
+    String s = "<html>Porcentagem de Aprovação: " + porcentAprovacao + "%<br>"
+      + "Quantidade de Reprovações por falta: " + quantidadeReprovacaoFalta + "</html";
+    JLabel info = new JLabel(s, SwingConstants.CENTER);
+    info.setFont(fonte);
+    infoUltPeriodoPanel.add(info, BorderLayout.CENTER);
+  }
+
   // Função a ser executada quando aperta botão
   @Override
   public void actionPerformed(ActionEvent e){
-    if (e.getSource() == bMenu){
-      inicio = TelaInicial.getInstance();
-      inicio.setLocationRelativeTo(this);
-      inicio.setVisible(true);
-      inicio.setBounds(this.getBounds());
-      this.setVisible(false);
+    Object source = e.getSource();
+    JFrame proxTela;
+    if(source == bMenu){
+      proxTela = TelaInicial.getInstance();
+    } else if(source == bSolicitarMaterias){
+      proxTela = TelaSolicitar.getInstance();
+    } else {
+      return;
     }
+    proxTela.setLocationRelativeTo(this);
+    proxTela.setBounds(this.getBounds());
+    this.setVisible(false);
+    proxTela.setVisible(true);
   }
-
 
   public Double getPorcentAprovacao(){ 
     return porcentAprovacao; 
@@ -168,15 +223,17 @@ public class TelaEstado extends JFrame implements ActionListener{
 
   public void setPorcentAprovacao(Double porcentAprovacao){
     this.porcentAprovacao = porcentAprovacao; 
+    updateInfoAprovacoes();
   }
   public void setQuantidadeReprovacaoFalta(int quantidadeReprovacaoFalta){ 
     this.quantidadeReprovacaoFalta = quantidadeReprovacaoFalta; 
+    updateInfoAprovacoes();
   }
   public void setMateriasBarreira(Vector<Materia> materiasBarreira){ 
     this.materiasBarreira = materiasBarreira; 
   }
   public void setMateriasCursadas(Vector<Vector<MateriaHistorico>> materiasCursadas) {
     this.materiasCursadas = materiasCursadas;
-    criaTabela();
+    updateTabelaCursadas();
   }
 }
