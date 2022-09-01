@@ -95,7 +95,7 @@ public class TelaEstado extends JFrame implements ActionListener{
     }
     this.remove(materiasCursadasSp);
 
-    String colunas[] = {"Código", "Nome", "Media Final", "Período"};
+    String colunas[] = {"Código", "Nome", "Media Final", "Carga Horária", "Período"};
     String data[][]  = fromMateriaMatrizToStringMatriz(materiasCursadas);
     materiasCursadasTabela = new JTable(data, colunas);
     materiasCursadasSp = new JScrollPane(materiasCursadasTabela);
@@ -146,9 +146,9 @@ public class TelaEstado extends JFrame implements ActionListener{
     if (e.getSource() == bMenu){
       inicio = TelaInicial.getInstance();
       inicio.setLocationRelativeTo(this);
-      this.setVisible(false);
       inicio.setVisible(true);
       inicio.setBounds(this.getBounds());
+      this.setVisible(false);
     }
   }
 
