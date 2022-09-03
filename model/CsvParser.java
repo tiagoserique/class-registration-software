@@ -2,6 +2,7 @@ package model;
 
 import materia.Lista;
 import materia.Materia;
+import materia.MateriaHistorico;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -74,6 +75,41 @@ public class CsvParser {
 
         return materias;
 
+    }
+
+    // Historico - adicionei isso
+    public Lista<MateriaHistorico> parseCsvHistorico() {
+
+        String [] fields;
+        Lista<MateriaHistorico> historico = new Lista<MateriaHistorico>();
+
+        while (lines.hasNext()) {
+
+            MateriaHistorico newHistorico = new MateriaHistorico();
+
+            fields = lines.next().split(";");
+
+            newHistorico.setMatrAluno(fields[0]);
+            newHistorico.setNomePessoa(fields[1]);
+            newHistorico.setCodCurso(fields[2]);
+            newHistorico.setNomeCurso(fields[3]);
+            newHistorico.setNumVersao(fields[4]);
+            newHistorico.setAno(fields[5]);
+            newHistorico.setMediaFinal(fields[6]);
+            newHistorico.setSituacaoItem(fields[7]);
+            newHistorico.setPeriodo(fields[8]);
+            newHistorico.setSituacao(fields[9]);
+            newHistorico.setCodAtivCurric(fields[10]);
+            newHistorico.setNomeAtivCurric(fields[11]);
+            newHistorico.setChTotal(fields[12]);
+            newHistorico.setDescrEstrutura(fields[13]);
+            newHistorico.setFrequencia(fields[14]);
+            newHistorico.setSigla(fields[15]);
+
+            historico.insere(newHistorico);
+        }
+
+        return historico;
     }
 
 }
