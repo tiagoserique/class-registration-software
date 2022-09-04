@@ -54,4 +54,23 @@ public class Controller {
 
         return qtd;
     }
+
+    protected float calculaIra(Vector<MateriaHistorico> materias) {
+
+        int cargaHorariaTotal = 0;
+        int somaParcial = 0;
+
+        for (MateriaHistorico materia: materias) {
+            
+            if (!(materia.getSituacaoItem().equals(MATRICULA))) {
+                int cargaHoraria = Integer.parseInt(materia.getChTotal());
+                int notaMateria = Integer.parseInt(materia.getMediaFinal());
+
+                cargaHorariaTotal += cargaHoraria;
+                somaParcial += notaMateria * cargaHoraria;
+            }
+        }
+
+        return ((float) somaParcial / cargaHorariaTotal);
+    }
 }

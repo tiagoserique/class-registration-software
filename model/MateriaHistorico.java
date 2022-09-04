@@ -32,12 +32,12 @@ public class MateriaHistorico implements Serializable {
 
 
     public String getMatrAluno    () { return matrAluno;      }
-    public String getNomePesso    () { return nomePessoa;     }
+    public String getNomePessoa    () { return nomePessoa;     }
     public String getCodCurso     () { return codCurso;       }
     public String getNomeCurso    () { return nomeCurso;      }
     public String getNumVersao    () { return numVersao;      }
     public String getAno          () { return ano;            }
-    public String getMediaFina    () { return mediaFinal;     }
+    public String getMediaFinal   () { return mediaFinal;     }
     public String getSituacaoItem () { return situacaoItem;   }
     public String getPeriodo      () { return periodo;        }
     public String getSituacao     () { return situacao;       }
