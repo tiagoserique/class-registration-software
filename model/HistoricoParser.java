@@ -12,12 +12,13 @@ public class HistoricoParser {
         this.historicFile = historicFile;
     }
 
-    public Vector<MateriaHistorico> parseHistorico() {
+    public Vector<Vector<MateriaHistorico>> parseHistorico() {
         
         CsvReader reader = new CsvReader(this.historicFile);
         Vector<String> lines = reader.readCsv();
 
         Vector<MateriaHistorico> historico = new Vector<MateriaHistorico>();
+        Vector<String> semestres = new Vector<String>();
 
         for (String line: lines) {
 
@@ -43,8 +44,31 @@ public class HistoricoParser {
             materiaHistorico.setSigla(fields[15]);
         
             historico.add(materiaHistorico);
+
+            String periodoAno = materiaHistorico.getPeriodo() + materiaHistorico.getAno();
+
+            if (!semestres.contains(periodoAno)) {
+                semestres.add(periodoAno);
+            }
+        }
+
+        Vector<Vector<MateriaHistorico>> historicoPorSemestre = new Vector<Vector<MateriaHistorico>>();
+
+        for (String semestre: semestres) {
+
+            Vector<MateriaHistorico> materias = new Vector<MateriaHistorico>();
+
+            for (MateriaHistorico materia: historico) {
+                
+                String periodoAno = materia.getPeriodo() + materia.getAno();
+
+                if (semestre.equals(periodoAno))
+                    materias.add(materia);
+            }
+
+            historicoPorSemestre.add(materias);
         }
     
-        return historico;
+        return historicoPorSemestre;
     }
 }
