@@ -5,8 +5,10 @@ BINDIR = ../bin/view
 SRCVIEW = TelaInicial.java TelaEstado.java TelaSolicitar.java
 GUI = guiElements
 GUIDIR = $(BINDIR)/$(GUI)
-BINGUI = $(GUIDIR)/Botao.class
-SRCGUI = $(GUI)/Botao.java
+BINGUI = $(GUIDIR)/Botao.class\
+				 $(GUIDIR)/Tabela.class
+SRCGUI = $(GUI)/Botao.java\
+				 $(GUI)/Tabela.java
 
 all: $(BINDIR)/$(MAIN).class
 	$(CC) $(MAIN).java

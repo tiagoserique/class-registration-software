@@ -3,6 +3,7 @@ package view;
 import java.util.Vector;
 
 import materia.MateriaHistorico;
+import materia.Materia;
 
 public class Test{
 
@@ -23,7 +24,18 @@ public class Test{
     }
 
     TelaEstado telaest = TelaEstado.getInstance();
+    Vector<Materia> vet = new Vector<Materia>();
+    for(int i = 0; i < 10; i++){
+      Materia temp = new Materia();
+      temp.setCodCurso("CI"+i);
+      temp.setPeriodo(i+1);
+      temp.setChTotal(i);
+      temp.setNomeDisci("MateriaB"+i);
+      vet.add(temp);
+    }
+
     telaest.setMateriasCursadas(mat);
+    telaest.setMateriasBarreira(vet);
   }
 
 }

@@ -50,7 +50,7 @@ public class TelaInicial extends JFrame implements ActionListener{
     this.add(meio, BorderLayout.CENTER);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setTitle("Quebra de barreiras");
-    this.setMinimumSize(new Dimension(500,300));
+    this.setMinimumSize(new Dimension(1200,300));
     this.setVisible(true);
   }
 

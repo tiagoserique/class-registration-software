@@ -12,12 +12,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
 import materia.Materia;
 import materia.MateriaHistorico;
 import view.guiElements.Botao;
+import view.guiElements.Tabela;
 
 public class TelaEstado extends JFrame implements ActionListener{
 
@@ -31,10 +31,18 @@ public class TelaEstado extends JFrame implements ActionListener{
   // tabela de materias cursadas a ser mostrada
   private JPanel materiasCursadasPanel;
   private JLabel materiasCursadasLabel;
-  private JTable materiasCursadasTabela;
+  private Tabela materiasCursadasTabela;
   private JScrollPane materiasCursadasSp;
   // ofertadas e ainda nao cursadas, ou nao aprovadas, por periodo
   private Vector<Vector<MateriaHistorico>> materiasCursadas;
+
+  // tabela de materias da barreira a ser mostrada
+  private JPanel materiasBarreiraPanel;
+  private JLabel materiasBarreiraLabel;
+  private Tabela materiasBarreiraTabela;
+  private JScrollPane materiasBarreiraSp;
+  // lista de materias que faltam para passar a barreira
+  private Vector<Materia> materiasBarreira;
 
   // informações relacionadas a aprovação do ultimo periodo
   private JPanel infoUltPeriodoPanel;
@@ -45,10 +53,8 @@ public class TelaEstado extends JFrame implements ActionListener{
   private int quantidadeReprovacaoFalta;
 
   // quantidade de campos a serem exibidos para cada materia
-  private final int numeroCampos = 5;
-
-  // lista de materias que faltam para passar a barreira
-  private Vector<Materia> materiasBarreira;
+  private final int numeroCamposC = 5;
+  private final int numeroCamposB = 4;
 
 
   private static TelaEstado instancia = null;
@@ -71,7 +77,7 @@ public class TelaEstado extends JFrame implements ActionListener{
     titulo.setFont(fonte);
 
     criaTabelaCursadas();
-
+    criaTabelaBarreira();
     criaInfoAprovacoes();
 
     fazBotoes();
@@ -108,6 +114,21 @@ public class TelaEstado extends JFrame implements ActionListener{
     updateTabelaCursadas();
   }
 
+  private void criaTabelaBarreira(){
+    materiasBarreiraPanel = new JPanel(new BorderLayout(10,10));
+
+    materiasBarreiraLabel = new JLabel("Matérias que faltam para barreira:", SwingConstants.CENTER);
+    materiasBarreiraLabel.setFont(fonte);
+    materiasBarreiraPanel.add(materiasBarreiraLabel, BorderLayout.PAGE_START);
+
+    materiasBarreiraSp = new JScrollPane(materiasBarreiraTabela);
+    materiasBarreiraSp.setFont(fonte);
+    materiasBarreiraPanel.add(materiasBarreiraSp, BorderLayout.CENTER);
+
+    this.add(materiasBarreiraPanel, BorderLayout.EAST);
+    updateTabelaBarreira();
+  }
+
   // Gera a tabela pra ser mostrada
   private void updateTabelaCursadas(){
     // this.remove(materiasCursadasTabela);
@@ -118,13 +139,7 @@ public class TelaEstado extends JFrame implements ActionListener{
 
     String colunas[] = {"Código", "Nome", "Media Final", "Carga Horária", "Período"};
     String data[][]  = fromMateriaMatrizToStringMatriz(materiasCursadas);
-    materiasCursadasTabela = new JTable(data, colunas){
-        private static final long serialVersionUID = 1L;
-        public boolean isCellEditable(int row, int column) {                
-                return false;               
-        };
-    };
-    materiasCursadasTabela .setFont(fonte);
+    materiasCursadasTabela = new Tabela(data, colunas, fonte);
     materiasCursadasSp = new JScrollPane(materiasCursadasTabela);
     materiasCursadasSp.setFont(fonte);
     materiasCursadasSp.setBounds(2, 2, 20, 20);
@@ -133,14 +148,45 @@ public class TelaEstado extends JFrame implements ActionListener{
     materiasCursadasPanel.add(materiasCursadasSp, BorderLayout.CENTER);
   }
 
+  // Gera a tabela pra ser mostrada
+  private void updateTabelaBarreira(){
+    // this.remove(materiasBarreiraTabela);
+    if(materiasBarreira == null){
+      return;
+    }
+    materiasBarreiraPanel.remove(materiasBarreiraSp);
+
+    String colunas[] = {"Código", "Nome", "Carga Horária", "Período"};
+    String data[][] = new String[materiasBarreira.size()][numeroCamposB];
+    for(int i = 0; i < materiasBarreira.size(); i++){
+      data[i] = fromMateriaToString(materiasBarreira.get(i));
+    }
+    materiasBarreiraTabela = new Tabela(data, colunas, fonte);
+    materiasBarreiraSp = new JScrollPane(materiasBarreiraTabela);
+    materiasBarreiraSp.setFont(fonte);
+    materiasBarreiraSp.setBounds(2, 2, 20, 20);
+
+    // materiasBarreiraPanel.add(materiasBarreiraTabela, BorderLayout.CENTER);
+    materiasBarreiraPanel.add(materiasBarreiraSp, BorderLayout.CENTER);
+  }
+
   // Transforma materia em vetor de Strings
   private String[] fromMateriaToString(MateriaHistorico mat, int periodo){
-    String[] res = new String[numeroCampos];
+    String[] res = new String[numeroCamposC];
     res[0] = mat.getCodCurso();
     res[1] = mat.getNomeAtivCurri();
     res[2] = mat.getMediaFinal();
     res[3] = mat.getChTotal();
     res[4] = Integer.toString(periodo);
+    return res;
+  }
+
+  private String[] fromMateriaToString(Materia mat){
+    String[] res = new String[numeroCamposB];
+    res[0] = mat.getCodCurso();
+    res[1] = mat.getNomeDisci();
+    res[2] = Integer.toString(mat.getChTotal());
+    res[3] = Integer.toString(mat.getPeriodo());
     return res;
   }
 
@@ -153,7 +199,7 @@ public class TelaEstado extends JFrame implements ActionListener{
     for(int i = 0; i < mat.size(); i++)
       amountMat += mat.get(i).size();
 
-    String[][] res = new String[amountMat][numeroCampos];
+    String[][] res = new String[amountMat][numeroCamposC];
 
     // Marca qual posição deve ser alterada
     int toChange = 0;
@@ -208,13 +254,13 @@ public class TelaEstado extends JFrame implements ActionListener{
     proxTela.setVisible(true);
   }
 
-  public Double getPorcentAprovacao(){ 
+  public Double getPorcentAprovacao(){
     return porcentAprovacao; 
   }
-  public int getQuantidadeReprovacaoFalta(){ 
+  public int getQuantidadeReprovacaoFalta(){
     return quantidadeReprovacaoFalta; 
   }
-  public Vector<Materia> getMateriasBarreira(){ 
+  public Vector<Materia> getMateriasBarreira(){
     return materiasBarreira; 
   }
   public Vector<Vector<MateriaHistorico>> getMateriasCursadas() {
@@ -231,6 +277,7 @@ public class TelaEstado extends JFrame implements ActionListener{
   }
   public void setMateriasBarreira(Vector<Materia> materiasBarreira){ 
     this.materiasBarreira = materiasBarreira; 
+    updateTabelaBarreira();
   }
   public void setMateriasCursadas(Vector<Vector<MateriaHistorico>> materiasCursadas) {
     this.materiasCursadas = materiasCursadas;
