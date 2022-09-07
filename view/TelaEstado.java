@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import materia.Materia;
 import materia.MateriaHistorico;
 import view.guiElements.Botao;
+import view.guiElements.Tabela;
 
 public class TelaEstado extends JFrame implements ActionListener{
 
@@ -31,7 +32,7 @@ public class TelaEstado extends JFrame implements ActionListener{
   // tabela de materias cursadas a ser mostrada
   private JPanel materiasCursadasPanel;
   private JLabel materiasCursadasLabel;
-  private JTable materiasCursadasTabela;
+  private Tabela materiasCursadasTabela;
   private JScrollPane materiasCursadasSp;
   // ofertadas e ainda nao cursadas, ou nao aprovadas, por periodo
   private Vector<Vector<MateriaHistorico>> materiasCursadas;
@@ -118,13 +119,7 @@ public class TelaEstado extends JFrame implements ActionListener{
 
     String colunas[] = {"Código", "Nome", "Media Final", "Carga Horária", "Período"};
     String data[][]  = fromMateriaMatrizToStringMatriz(materiasCursadas);
-    materiasCursadasTabela = new JTable(data, colunas){
-        private static final long serialVersionUID = 1L;
-        public boolean isCellEditable(int row, int column) {                
-                return false;               
-        };
-    };
-    materiasCursadasTabela .setFont(fonte);
+    materiasCursadasTabela = new Tabela(data, colunas, fonte);
     materiasCursadasSp = new JScrollPane(materiasCursadasTabela);
     materiasCursadasSp.setFont(fonte);
     materiasCursadasSp.setBounds(2, 2, 20, 20);
