@@ -14,6 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import java.util.Vector;
+
+import materia.Materia;
+
+
 public class TelaSolicitar extends JFrame implements ActionListener{
 
   // panel para organização de botões
@@ -26,6 +31,10 @@ public class TelaSolicitar extends JFrame implements ActionListener{
   private static TelaSolicitar instancia = null;
 
   private Font fonte;
+
+  // referente a grade de materias ofertadas por periodo que ainda nao foram cursadas
+  private Vector<Vector<Materia>> materiasNaoCursadasOfertadas;
+
 
   public static synchronized TelaSolicitar getInstance(){
     if (instancia == null)
@@ -80,5 +89,15 @@ public class TelaSolicitar extends JFrame implements ActionListener{
     proxTela.setBounds(this.getBounds());
     this.setVisible(false);
     proxTela.setVisible(true);
+  }
+
+
+
+  // referente a grade de materias ofertadas por periodo que ainda nao foram cursadas
+  public Vector<Vector<Materia>> getMateriasNaoCursadasOfertadas() {
+    return materiasNaoCursadasOfertadas;
+  }
+  public void setMateriasNaoCursadasOfertadas(Vector<Vector<Materia>> materiasNaoCursadasOfertadas) {
+    this.materiasNaoCursadasOfertadas = materiasNaoCursadasOfertadas;
   }
 }

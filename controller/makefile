@@ -3,7 +3,8 @@ RUN = java -cp ../bin
 BINDIR = ../bin/controller
 
 all: $(BINDIR)/Controller.class\
-	$(BINDIR)/TelaEstadoController.class
+	$(BINDIR)/TelaEstadoController.class\
+	$(BINDIR)/TelaSolicitarController.class
 
 
 $(BINDIR)/%.class: ./%.java

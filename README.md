@@ -28,3 +28,9 @@
 * O sistema deve permitir salvar os dados do pedido em um arquivo de forma a permitir que o aluno os edite posteriormente
 
 * Quando o aluno selecionar enviar, o sistema devera gerar um arquivo texto contendo os dados do pedido.
+
+# Pra compilar 
+
+make dentro do diretorio materia
+
+make run no diretorio de view
