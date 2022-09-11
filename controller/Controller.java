@@ -2,6 +2,8 @@ package controller;
 
 import java.util.Vector;
 
+import materia.Materia;
+
 // import materia.Materia;
 
 import materia.MateriaHistorico;
@@ -12,6 +14,9 @@ public class Controller {
     protected String REP_FALTA = "3";
     protected String MATRICULA = "10";
 
+    protected int CASO_A = 5;
+    protected int CASO_B = 4;
+    protected int CASO_C = 3;
 
     // checa se a materia ja foi cursada e o aluno aprovado
     // mC = materias cursadas
@@ -73,5 +78,37 @@ public class Controller {
         }
 
         return ((float) somaParcial / cargaHorariaTotal);
+    }
+
+    protected Vector<Materia> selecionaMaterias(Vector<Materia> materiasSolicitadas, int numeroMax) {
+
+        if (materiasSolicitadas.size() <= numeroMax)
+                    return materiasSolicitadas;
+        else {
+            Vector<Materia> materiaSugeridas = new Vector<Materia>();
+
+            for (int i=0; i<5; i++)
+                materiaSugeridas.add(materiasSolicitadas.get(i));
+            
+            return materiaSugeridas;
+        }
+    }
+
+    protected Vector<Materia> materiasIdeais(Vector<Vector<MateriaHistorico>> historicoAluno, Vector<Materia> materiasSolicitadas) {
+
+        if (calculaIra(historicoAluno) >= 0.8) {
+            return materiasSolicitadas;
+        } else {
+            
+            Vector<MateriaHistorico> semestreAnterior = historicoAluno.lastElement();
+            Double porcentagemAprovacao = calculaPorcentAprovacao(semestreAnterior);
+
+            if (porcentagemAprovacao >= 0.66)
+                return selecionaMaterias(materiasSolicitadas, CASO_A);
+            else if (porcentagemAprovacao >= 0.5)
+                return selecionaMaterias(materiasSolicitadas, CASO_B);
+            else
+                return selecionaMaterias(materiasSolicitadas, CASO_C);
+        }
     }
 }
