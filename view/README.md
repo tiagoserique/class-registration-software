@@ -2,7 +2,7 @@
 
 ## TelaInicial
 
-- [ ] Importar matérias.
+- [X] Importar matérias.
 
 ## TelaEstado
 

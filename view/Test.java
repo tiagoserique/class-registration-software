@@ -5,7 +5,7 @@ import java.util.Vector;
 import materia.MateriaHistorico;
 import materia.Materia;
 
-public class Test{
+public class Test implements TelaSub{
 
   public static void main(String[] args){
     TelaInicial tela = TelaInicial.getInstance();
@@ -34,8 +34,17 @@ public class Test{
       vet.add(temp);
     }
 
+    tela.subscribe(new Test());
+
     telaest.setMateriasCursadas(mat);
     telaest.setMateriasBarreira(vet);
   }
 
+  public void update(Tela t){
+    if(t.getPedido() == "import"){
+      TelaInicial tela = TelaInicial.getInstance();
+      System.out.println("Importando de " + tela.getImportPath());
+      //fazer sets e gets necessários
+    }
+  }
 }
