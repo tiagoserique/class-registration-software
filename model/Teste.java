@@ -1,33 +1,19 @@
 package model;
 
+import materia.Materia;
 import java.util.Vector;
 
 public class Teste {
     public static void main (String[] args) {
 
-        HistoricoParser historicoAluno = new HistoricoParser("exemplos/historico/exemplo_trabalho_TAP_historico.csv");
+        MateriaParser materiaParser = new MateriaParser("exemplos/grade-bcc-2019/exemplo_trabalho_TAP_Disciplinas_2019.csv");
 
-        Vector<Vector<MateriaHistorico>> materiasHistorico = historicoAluno.parseHistorico();
+        Vector<Vector<Materia>> materias = materiaParser.parseMaterias();
 
-        int cargaHorariaTotal = 0;
-        int somaTotal = 0;
-
-        for (Vector<MateriaHistorico> semestre: materiasHistorico) {
-
-            for (MateriaHistorico materia: semestre) {
-                
-                if (!(materia.getSituacaoItem().equals("10"))) {
-                    int cargaHoraria = Integer.parseInt(materia.getChTotal());
-                    int notaMateria = Integer.parseInt(materia.getMediaFinal());
-
-                    cargaHorariaTotal += cargaHoraria;
-                    somaTotal += notaMateria * cargaHoraria;
-                }
-            }
+        for (Vector<Materia> periodo: materias) {
+            System.out.println("Periodo " + periodo.firstElement().getPeriodo());
+            for (Materia materia: periodo)
+                System.out.println(materia.getCodDisci() + " - " + materia.getNomeDisci());
         }
-
-        System.out.println(somaTotal);
-        System.out.println(cargaHorariaTotal);
-        System.out.println("IRA: " + ((float) somaTotal / (cargaHorariaTotal * 100)));
     }
 }

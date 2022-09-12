@@ -1,5 +1,6 @@
 package model;
 
+import materia.MateriaHistorico;
 import java.util.Vector;
 
 public class HistoricoParser {
@@ -10,6 +11,14 @@ public class HistoricoParser {
 
     public HistoricoParser (String historicFile) {
         this.historicFile = historicFile;
+    }
+
+    public void setHistoricFile(String historicFile) {
+        this.historicFile = historicFile;
+    }
+
+    public String getHistoricFile() {
+        return historicFile;
     }
 
     private String[] tryToSplit (String line) {
