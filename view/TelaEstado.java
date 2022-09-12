@@ -131,9 +131,7 @@ public class TelaEstado extends Tela{
   // Gera a tabela pra ser mostrada
   private void updateTabelaCursadas(){
     // this.remove(materiasCursadasTabela);
-    if(materiasCursadas == null){
-      return;
-    }
+    if(materiasCursadas == null){ return; }
     materiasCursadasPanel.remove(materiasCursadasSp);
 
     String colunas[] = {"Código", "Nome", "Media Final", "Carga Horária", "Período"};
@@ -176,7 +174,7 @@ public class TelaEstado extends Tela{
     res[1] = mat.getNomeAtivCurri();
     res[2] = mat.getMediaFinal();
     res[3] = mat.getChTotal();
-    res[4] = Integer.toString(periodo);
+    res[4] = periodo <= 8 ? Integer.toString(periodo) : "Optativa";
     return res;
   }
 
@@ -185,7 +183,7 @@ public class TelaEstado extends Tela{
     res[0] = mat.getCodCurso();
     res[1] = mat.getNomeDisci();
     res[2] = Integer.toString(mat.getChTotal());
-    res[3] = Integer.toString(mat.getPeriodo());
+    res[3] = mat.getPeriodo() <= 8 ? Integer.toString(mat.getPeriodo()) : "Optativa";
     return res;
   }
 
