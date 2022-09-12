@@ -2,7 +2,13 @@ CC = javac -cp ../bin -d ../bin
 RUN = java -cp ../bin
 MAIN = Test
 BINDIR = ../bin/view
+
+SUBSCRIBE = Tela.java TelaSub.java
+SUBSCRIBEBIN = $(BINDIR)/Tela.class\
+							 $(BINDIR)/TelaSub.class
+
 SRCVIEW = TelaInicial.java TelaEstado.java TelaSolicitar.java
+
 GUI = guiElements
 GUIDIR = $(BINDIR)/$(GUI)
 BINGUI = $(GUIDIR)/Botao.class\
@@ -16,7 +22,10 @@ all: $(BINDIR)/$(MAIN).class
 run: all
 	@ $(RUN) view.$(MAIN)
 
-$(BINDIR)/$(MAIN).class: $(BINGUI) $(SRCVIEW)
+$(SUBSCRIBEBIN): $(SUBSCRIBE)
+	$(CC) $(SUBSCRIBE)
+
+$(BINDIR)/$(MAIN).class: $(SUBSCRIBEBIN) $(BINGUI) $(SRCVIEW)
 	$(CC) $(SRCVIEW)
 
 $(BINGUI): $(SRCGUI)

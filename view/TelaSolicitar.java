@@ -7,7 +7,6 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +18,7 @@ import java.util.Vector;
 import materia.Materia;
 
 
-public class TelaSolicitar extends JFrame implements ActionListener{
+public class TelaSolicitar extends Tela{
 
   // panel para organização de botões
   private JPanel botoes;

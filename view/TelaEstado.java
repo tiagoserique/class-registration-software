@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -19,7 +18,7 @@ import materia.MateriaHistorico;
 import view.guiElements.Botao;
 import view.guiElements.Tabela;
 
-public class TelaEstado extends JFrame implements ActionListener{
+public class TelaEstado extends Tela{
 
   // panel para organização de botões
   private JPanel botoes;

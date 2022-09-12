@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,7 +13,7 @@ import javax.swing.SwingConstants;
 
 import view.guiElements.Botao;
 
-public class TelaInicial extends JFrame implements ActionListener{
+public class TelaInicial extends Tela{
 
   private JPanel botoes;
 
