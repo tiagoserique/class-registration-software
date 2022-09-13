@@ -46,6 +46,7 @@ public class Test implements TelaSub{
     }
 
     tela.subscribe(new Test());
+    telasol.subscribe(new Test());
 
     telasol.setMateriasNaoCursadasOfertadas(vet2);
 
@@ -54,10 +55,21 @@ public class Test implements TelaSub{
   }
 
   public void update(Tela t){
-    if(t.getPedido() == "import"){
+    String pedido = t.getPedido();
+    if(pedido == "import"){
       TelaInicial tela = TelaInicial.getInstance();
       System.out.println("Importando de " + tela.getImportPath());
       //fazer sets e gets necessários
+    } else if(pedido == "verify") {
+      TelaSolicitar telaSol = TelaSolicitar.getInstance();
+      System.out.println("Verificando o vetor:");
+      for(Materia m: telaSol.getMateriasNaoCursadasSolicitadas()){
+        System.out.println(m.getNomeDisci());
+      }
+    } else if(pedido == "save") {
+      TelaSolicitar telaSol = TelaSolicitar.getInstance();
+      System.out.println("Exportando em " + telaSol.getExportPath());
+      // salvar arquivo
     }
   }
 }

@@ -184,7 +184,7 @@ public class TelaSolicitar extends Tela{
       JFileChooser arqs = new JFileChooser();
       arqs.setCurrentDirectory(new File("."));
       arqs.setFont(fonte);
-      int response = arqs.showOpenDialog(null);
+      int response = arqs.showSaveDialog(null);
       if(response == JFileChooser.APPROVE_OPTION){
         String path = arqs.getSelectedFile().getAbsolutePath();
         super.setPedido("save");
