@@ -180,7 +180,7 @@ public class TelaEstado extends Tela{
 
   private String[] fromMateriaToString(Materia mat){
     String[] res = new String[numeroCamposB];
-    res[0] = mat.getCodCurso();
+    res[0] = mat.getCodDisci();
     res[1] = mat.getNomeDisci();
     res[2] = Integer.toString(mat.getChTotal());
     res[3] = mat.getPeriodo() <= 8 ? Integer.toString(mat.getPeriodo()) : "Optativa";

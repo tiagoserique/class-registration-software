@@ -17,7 +17,7 @@ public class Test implements TelaSub{
       MateriaHistorico temp = new MateriaHistorico();
       temp.setCodCurso("CI"+i);
       temp.setNomeAtivCurric("Nome"+i);
-      temp.setMediaFinal("Media"+1);
+      temp.setMediaFinal("Media"+i);
       temp.setChTotal("CH"+i);
       toadd.add(temp);
       mat.add(toadd);
@@ -27,7 +27,7 @@ public class Test implements TelaSub{
     Vector<Materia> vet = new Vector<Materia>();
     for(int i = 0; i < 10; i++){
       Materia temp = new Materia();
-      temp.setCodCurso("CI"+i);
+      temp.setCodDisci("CI"+i);
       temp.setPeriodo(i+1);
       temp.setChTotal(i);
       temp.setNomeDisci("MateriaB"+i);
