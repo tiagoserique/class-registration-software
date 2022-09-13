@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.Vector;
 
+import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -106,7 +107,23 @@ public class TelaSolicitar extends Tela{
     bConfirmar = new Botao("Salvar pedido em um arquivo", fonte, this);
     bConfirmar.setEnabled(false);
 
-    centralPanel = new JPanel(new GridLayout(4, 1, 2, 2));
+    bAdd.      setMaximumSize(new Dimension(300, 100));
+    bRmv.      setMaximumSize(new Dimension(300, 100));
+    bVerificar.setMaximumSize(new Dimension(300, 100));
+    bConfirmar.setMaximumSize(new Dimension(300, 100));
+
+    bAdd.      setAlignmentX(CENTER_ALIGNMENT);
+    bRmv.      setAlignmentX(CENTER_ALIGNMENT);
+    bVerificar.setAlignmentX(CENTER_ALIGNMENT);
+    bConfirmar.setAlignmentX(CENTER_ALIGNMENT);
+
+    bAdd.      setAlignmentY(CENTER_ALIGNMENT);
+    bRmv.      setAlignmentY(CENTER_ALIGNMENT);
+    bVerificar.setAlignmentY(CENTER_ALIGNMENT);
+    bConfirmar.setAlignmentY(CENTER_ALIGNMENT);
+
+    centralPanel = new JPanel();
+    centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
     centralPanel.add(bVerificar);
     centralPanel.add(bAdd);
     centralPanel.add(bRmv);
