@@ -7,9 +7,13 @@ import view.TelaSolicitar;
 import materia.Materia;
 import materia.MateriaHistorico;
 
+import model.HistoricoParser;
+import model.MateriaParser;
+
 public class TelaSolicitarController extends Controller {
     private TelaSolicitar screen;
-
+    private HistoricoParser parserHistorico;
+    private MateriaParser parserMateria;
 
     public void executa(Object view){
         this.screen = (TelaSolicitar) view;
@@ -20,13 +24,13 @@ public class TelaSolicitarController extends Controller {
         // Mostrar matérias ofertadas neste semestre que não foram cursadas, por ordem de período.
 
         // ler materias que foram cursadas e que estao no historico
-        Vector<Vector<MateriaHistorico>> matCursadas = new Vector<Vector<MateriaHistorico>>();
+        Vector<Vector<MateriaHistorico>> matCursadas = parserHistorico.parseHistorico();
 
         // ler materias que foram ofertadas
-        Vector<Vector<Materia>> matOfertadas = new Vector<Vector<Materia>>();
+        Vector<Vector<Materia>> matOfertadas = parserMateria.parseMaterias();
 
         // filtra materias que nao foram cursadas
-        Vector<Vector<Materia>> matNaoCursadasOfertadas = filtraMateriasNaoCursadas(matOfertadas, matCursadas);
+        Vector<Materia> matNaoCursadasOfertadas = filtraMateriasNaoCursadas(matOfertadas, matCursadas);
 
         // mostra materias que nao foram cursadas
         this.screen.setMateriasNaoCursadasOfertadas(matNaoCursadasOfertadas);
@@ -46,8 +50,8 @@ public class TelaSolicitarController extends Controller {
     }
 
 
-    private Vector<Vector<Materia>> filtraMateriasNaoCursadas(Vector<Vector<Materia>> mO, Vector<Vector<MateriaHistorico>> mC){ 
-        Vector<Vector<Materia>> matNaoCursadas = new Vector<Vector<Materia>>();
+    private Vector<Materia> filtraMateriasNaoCursadas(Vector<Vector<Materia>> mO, Vector<Vector<MateriaHistorico>> mC){ 
+        Vector<Materia> matNaoCursadas = new Vector<Materia>();
 
         for (int periodo = 0; periodo < mO.size(); periodo++){
             for (int materia = 0; materia < mO.get(periodo).size(); materia++){
@@ -57,7 +61,7 @@ public class TelaSolicitarController extends Controller {
                 Boolean condition = jaFoiCursada(mC, codBarreira);
 
                 if ( !condition ){ 
-                    matNaoCursadas.add(mO.get(materia));
+                    matNaoCursadas.add(mO.get(periodo).get(materia));
                 }
             }
         }

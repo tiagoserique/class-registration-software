@@ -7,8 +7,13 @@ import view.TelaEstado;
 import materia.Materia;
 import materia.MateriaHistorico;
 
+import model.HistoricoParser;
+import model.MateriaParser;
+
 public class TelaEstadoController extends Controller {
     private TelaEstado screen;
+    private HistoricoParser parserHistorico;
+    private MateriaParser parserMateria;
 
 
     public void executa(Object view){
@@ -19,7 +24,7 @@ public class TelaEstadoController extends Controller {
         // cursadas pelo aluno
 
         // busca do model que le as MateriasHistorico
-        Vector<Vector<MateriaHistorico>> matCursadas = new Vector<Vector<MateriaHistorico>>();
+        Vector<Vector<MateriaHistorico>> matCursadas = parserHistorico.parseHistorico();
         this.screen.setMateriasCursadas(matCursadas);
 
 
@@ -31,7 +36,7 @@ public class TelaEstadoController extends Controller {
         Vector<Materia> matNaoCursadasBarreira;
 
         // buscar da model que le todas as Materias da grade
-        Vector<Vector<Materia>> materiasOfertadas = new Vector<Vector<Materia>>();
+        Vector<Vector<Materia>> materiasOfertadas = parserMateria.parseMaterias();
 
         matBarreira = filtraMateriasBarreira(materiasOfertadas);
         matNaoCursadasBarreira = filtraMateriasNaoCursadas(matBarreira, matCursadas);
