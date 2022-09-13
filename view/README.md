@@ -12,6 +12,6 @@
 
 ## TelaSolicitar
 
-- [ ] Mostrar matérias ofertadas neste semestre que não foram cursadas, por ordem de período.
-- [ ] Permitir selecionar matérias que quer cursar com ordem de prioridade.
-- [ ] Permitir enviar matérias selecionadas para fazer pedido.
+- [X] Mostrar matérias ofertadas neste semestre que não foram cursadas, por ordem de período.
+- [X] Permitir selecionar matérias que quer cursar com ordem de prioridade.
+- [X] Permitir enviar matérias selecionadas para fazer pedido.

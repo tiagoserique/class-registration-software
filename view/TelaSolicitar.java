@@ -5,9 +5,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -17,8 +19,14 @@ import javax.swing.SwingConstants;
 import materia.Materia;
 import view.guiElements.Botao;
 
-
+// Pedido será "verify" para verficar as materias selecionadas
+// Quando verificar, atualizar tanto as matérias solicitadas quanto as matérias a serem pedidas
+// Pedido será "save" quando se deseja salvar
+// Quando pedido for "save" TelaSolicitar.getExportPath(); retorna o caminha do arquivo a ser salvo
 public class TelaSolicitar extends Tela{
+  
+  // Caminho do arquivo pra salvar
+  private String exportPath = "";
 
   // panel para organização de botões
   private JPanel botoes;
@@ -37,7 +45,7 @@ public class TelaSolicitar extends Tela{
   private JList<String> listNaoCursadas;
   private JList<String> listSolicitadas;
 
-  private JPanel addRmvPanel;
+  private JPanel centralPanel;
   private Botao bAdd;
   private Botao bRmv;
 
@@ -55,7 +63,7 @@ public class TelaSolicitar extends Tela{
     this.setLayout(new BorderLayout(10,10));
     fonte = new Font("Hack", Font.BOLD, 16);
 
-    JLabel titulo = new JLabel("Selecionar matérias para solicitar, clique na ordem de prioridade");
+    JLabel titulo = new JLabel("Selecionar matérias para solicitar, clique na ordem de prioridade (é necessário verificar antes de salvar)");
     titulo.setHorizontalAlignment(SwingConstants.CENTER);
     titulo.setFont(fonte);
     this.add(titulo, BorderLayout.PAGE_START);
@@ -66,8 +74,8 @@ public class TelaSolicitar extends Tela{
     fazBotoes();
     this.add(botoes, BorderLayout.PAGE_END);
 
-    addRmvMake();
-    this.add(addRmvPanel, BorderLayout.CENTER);
+    fazPainelCentral();
+    this.add(centralPanel, BorderLayout.CENTER);
 
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setTitle("Solicitar Matérias");
@@ -90,15 +98,19 @@ public class TelaSolicitar extends Tela{
     return result;
   }
 
-  private void addRmvMake(){
+  private void fazPainelCentral(){
     bAdd = new Botao(">>>", fonte, this);
     bRmv = new Botao("<<<", fonte, this);
 
-    addRmvPanel = new JPanel(new GridLayout(4, 1, 2, 2));
-    addRmvPanel.add(new JLabel());
-    addRmvPanel.add(bAdd);
-    addRmvPanel.add(bRmv);
-    addRmvPanel.add(new JLabel());
+    bVerificar = new Botao("Verificar estado atual", fonte, this);
+    bConfirmar = new Botao("Salvar pedido em um arquivo", fonte, this);
+    bConfirmar.setEnabled(false);
+
+    centralPanel = new JPanel(new GridLayout(4, 1, 2, 2));
+    centralPanel.add(bVerificar);
+    centralPanel.add(bAdd);
+    centralPanel.add(bRmv);
+    centralPanel.add(bConfirmar);
   }
 
   private String materiaToString(Materia mat){
@@ -120,10 +132,18 @@ public class TelaSolicitar extends Tela{
     botoes.add(bMenu);
   }
 
+  private void updateScreen(){
+    if(this.isVisible()){
+      this.setVisible(false);
+      this.setVisible(true);
+    }
+  }
+
   // Função a ser executada quando aperta botão
   @Override
   public void actionPerformed(ActionEvent e){
     Object source = e.getSource();
+    // Adicionar/remover materias
     if(source == bAdd){
       int index = listNaoCursadas.getSelectedIndex();
       if(index == -1) return;
@@ -135,8 +155,8 @@ public class TelaSolicitar extends Tela{
       // Atualizar interface
       listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
       listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
-      this.setVisible(false);
-      this.setVisible(true);
+      bConfirmar.setEnabled(false);
+      updateScreen();
       return;
     } else if (source == bRmv){
       int index = listSolicitadas.getSelectedIndex();
@@ -149,10 +169,32 @@ public class TelaSolicitar extends Tela{
       // Atualizar interface
       listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
       listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
-      this.setVisible(false);
-      this.setVisible(true);
+      bConfirmar.setEnabled(false);
+      updateScreen();
       return;
     }
+    // Verificar/Salvar
+    if(source == bVerificar){
+      super.setPedido("verify");
+      this.updateSub();
+      super.setPedido("");
+      bConfirmar.setEnabled(true);
+      return;
+    } else if (source == bConfirmar){
+      JFileChooser arqs = new JFileChooser();
+      arqs.setCurrentDirectory(new File("."));
+      arqs.setFont(fonte);
+      int response = arqs.showOpenDialog(null);
+      if(response == JFileChooser.APPROVE_OPTION){
+        String path = arqs.getSelectedFile().getAbsolutePath();
+        super.setPedido("save");
+        this.exportPath = path;
+        this.updateSub();
+        super.setPedido("");
+      }
+      return;
+    }
+    //Trocar de menu
     JFrame proxTela;
     if(source == bMenu){
       proxTela = TelaInicial.getInstance();
@@ -174,6 +216,7 @@ public class TelaSolicitar extends Tela{
   public void setMateriasNaoCursadasOfertadas(Vector<Materia> materiasNaoCursadasOfertadas) {
     this.materiasNaoCursadasOfertadas = materiasNaoCursadasOfertadas;
     listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
+    updateScreen();
   }
   // referente a grade de materias ofertadas por periodo que serão solicitadas
   public Vector<Materia> getMateriasNaoCursadasSolicitadas() {
@@ -182,5 +225,8 @@ public class TelaSolicitar extends Tela{
   public void setMateriasNaoCursadasSolicitadas(Vector<Materia> materiasNaoCursadasSolicitadas) {
     this.materiasNaoCursadasSolicitadas = materiasNaoCursadasSolicitadas;
     listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
+    updateScreen();
   }
+  // arquivo salvar
+  public String getExportPath(){ return this.exportPath; }
 }
