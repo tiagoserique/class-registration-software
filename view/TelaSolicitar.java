@@ -128,16 +128,29 @@ public class TelaSolicitar extends Tela{
       int index = listNaoCursadas.getSelectedIndex();
       if(index == -1) return;
       Materia selecionada = materiasNaoCursadasOfertadas.get(index);
-      System.out.println(selecionada.getNomeDisci());
+      System.out.println("Adicionar materia: " + selecionada.getNomeDisci());
       // Passar materia de uma lista para outra
       materiasNaoCursadasOfertadas.remove(selecionada);
       materiasNaoCursadasSolicitadas.add(selecionada);
       // Atualizar interface
-      this.remove(listNaoCursadas);
       listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
       listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
+      this.setVisible(false);
+      this.setVisible(true);
       return;
     } else if (source == bRmv){
+      int index = listSolicitadas.getSelectedIndex();
+      if(index == -1) return;
+      Materia selecionada = materiasNaoCursadasSolicitadas.get(index);
+      System.out.println("Remover materia: " + selecionada.getNomeDisci());
+      // Passar materia de uma lista para outra
+      materiasNaoCursadasOfertadas.add(selecionada);
+      materiasNaoCursadasSolicitadas.remove(selecionada);
+      // Atualizar interface
+      listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
+      listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
+      this.setVisible(false);
+      this.setVisible(true);
       return;
     }
     JFrame proxTela;
