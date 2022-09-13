@@ -64,7 +64,7 @@ public class TelaInicial extends Tela{
   private void fazAreaCentral(){
     areaCentral = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-    bImportarMaterias = new Botao("Importar Matérias de um csv", fonte, this);
+    bImportarMaterias = new Botao("Importar Histórico de um csv", fonte, this);
     bImportarMaterias.setBackground(new Color(0xeeeeee));
     bImportarMaterias.setForeground(new Color(0x44475a));
     bImportarMaterias.setMaximumSize(new Dimension(200, 150));

@@ -1,21 +1,21 @@
 package view;
 
-import view.guiElements.Botao;
-
-import java.awt.Dimension;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.util.Vector;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import java.util.Vector;
-
 import materia.Materia;
+import view.guiElements.Botao;
 
 
 public class TelaSolicitar extends Tela{
@@ -32,7 +32,17 @@ public class TelaSolicitar extends Tela{
   private Font fonte;
 
   // referente a grade de materias ofertadas por periodo que ainda nao foram cursadas
-  private Vector<Vector<Materia>> materiasNaoCursadasOfertadas;
+  private Vector<Materia> materiasNaoCursadasOfertadas = new Vector<Materia>();
+  private Vector<Materia> materiasNaoCursadasSolicitadas = new Vector<Materia>();
+  private JList<String> listNaoCursadas;
+  private JList<String> listSolicitadas;
+
+  private JPanel addRmvPanel;
+  private Botao bAdd;
+  private Botao bRmv;
+
+  private Botao bVerificar;
+  private Botao bConfirmar;
 
 
   public static synchronized TelaSolicitar getInstance(){
@@ -45,22 +55,60 @@ public class TelaSolicitar extends Tela{
     this.setLayout(new BorderLayout(10,10));
     fonte = new Font("Hack", Font.BOLD, 16);
 
-    JLabel titulo = new JLabel("Selecionar matérias para solicitar");
+    JLabel titulo = new JLabel("Selecionar matérias para solicitar, clique na ordem de prioridade");
     titulo.setHorizontalAlignment(SwingConstants.CENTER);
     titulo.setFont(fonte);
+    this.add(titulo, BorderLayout.PAGE_START);
 
-    JLabel meio = new JLabel("PlaceHolder");
-    meio.setHorizontalAlignment(SwingConstants.CENTER);
-    meio.setFont(fonte);
+    listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
+    listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
 
     fazBotoes();
-
     this.add(botoes, BorderLayout.PAGE_END);
-    this.add(titulo, BorderLayout.PAGE_START);
-    this.add(meio, BorderLayout.CENTER);
+
+    addRmvMake();
+    this.add(addRmvPanel, BorderLayout.CENTER);
+
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setTitle("Solicitar Matérias");
     this.setMinimumSize(new Dimension(500,300));
+  }
+
+  private JList<String> geraLista(JList<String> lista, Vector<Materia> materias, String pos){
+    if(materias == null) return lista;
+    if(lista != null){
+      this.remove(lista);
+    }
+
+    DefaultListModel<String> demo = new DefaultListModel<String>();
+    for(int i = 0; i < materias.size(); i++)
+      demo.addElement( materiaToString(materias.get(i)) );
+
+    JList<String> result = new JList<String>(demo);
+    result.setFont(fonte);
+    this.add(result, pos);
+    return result;
+  }
+
+  private void addRmvMake(){
+    bAdd = new Botao(">>>", fonte, this);
+    bRmv = new Botao("<<<", fonte, this);
+
+    addRmvPanel = new JPanel(new GridLayout(4, 1, 2, 2));
+    addRmvPanel.add(new JLabel());
+    addRmvPanel.add(bAdd);
+    addRmvPanel.add(bRmv);
+    addRmvPanel.add(new JLabel());
+  }
+
+  private String materiaToString(Materia mat){
+    // Código, Nome, Carga horária, Período
+    String result;
+    result  = mat.getCodDisci();
+    result += "  " + mat.getNomeDisci();
+    result += "  " + "CH" + Integer.toString(mat.getChTotal());
+    result += "  " + (mat.getPeriodo() <= 8 ? Integer.toString(mat.getPeriodo()) + "° Período" : "Optativa");
+    return result;
   }
 
   private void fazBotoes(){
@@ -76,6 +124,22 @@ public class TelaSolicitar extends Tela{
   @Override
   public void actionPerformed(ActionEvent e){
     Object source = e.getSource();
+    if(source == bAdd){
+      int index = listNaoCursadas.getSelectedIndex();
+      if(index == -1) return;
+      Materia selecionada = materiasNaoCursadasOfertadas.get(index);
+      System.out.println(selecionada.getNomeDisci());
+      // Passar materia de uma lista para outra
+      materiasNaoCursadasOfertadas.remove(selecionada);
+      materiasNaoCursadasSolicitadas.add(selecionada);
+      // Atualizar interface
+      this.remove(listNaoCursadas);
+      listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
+      listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
+      return;
+    } else if (source == bRmv){
+      return;
+    }
     JFrame proxTela;
     if(source == bMenu){
       proxTela = TelaInicial.getInstance();
@@ -90,13 +154,20 @@ public class TelaSolicitar extends Tela{
     proxTela.setVisible(true);
   }
 
-
-
   // referente a grade de materias ofertadas por periodo que ainda nao foram cursadas
-  public Vector<Vector<Materia>> getMateriasNaoCursadasOfertadas() {
+  public Vector<Materia> getMateriasNaoCursadasOfertadas() {
     return materiasNaoCursadasOfertadas;
   }
-  public void setMateriasNaoCursadasOfertadas(Vector<Vector<Materia>> materiasNaoCursadasOfertadas) {
+  public void setMateriasNaoCursadasOfertadas(Vector<Materia> materiasNaoCursadasOfertadas) {
     this.materiasNaoCursadasOfertadas = materiasNaoCursadasOfertadas;
+    listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
+  }
+  // referente a grade de materias ofertadas por periodo que serão solicitadas
+  public Vector<Materia> getMateriasNaoCursadasSolicitadas() {
+    return materiasNaoCursadasSolicitadas;
+  }
+  public void setMateriasNaoCursadasSolicitadas(Vector<Materia> materiasNaoCursadasSolicitadas) {
+    this.materiasNaoCursadasSolicitadas = materiasNaoCursadasSolicitadas;
+    listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
   }
 }

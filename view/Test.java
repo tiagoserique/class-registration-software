@@ -34,7 +34,20 @@ public class Test implements TelaSub{
       vet.add(temp);
     }
 
+    TelaSolicitar telasol = TelaSolicitar.getInstance();
+    Vector<Materia> vet2 = new Vector<Materia>();
+    for(int i = 0; i < 10; i++){
+      Materia temp = new Materia();
+      temp.setCodDisci("CI"+i);
+      temp.setPeriodo(i+1);
+      temp.setChTotal(i);
+      temp.setNomeDisci("MateriaS"+i);
+      vet2.add(temp);
+    }
+
     tela.subscribe(new Test());
+
+    telasol.setMateriasNaoCursadasOfertadas(vet2);
 
     telaest.setMateriasCursadas(mat);
     telaest.setMateriasBarreira(vet);
