@@ -49,6 +49,7 @@ public class Test implements TelaSub{
     telasol.subscribe(new Test());
 
     telasol.setMateriasNaoCursadasOfertadas(vet2);
+    telasol.setQuantSugerido(3);
 
     telaest.setMateriasCursadas(mat);
     telaest.setMateriasBarreira(vet);

@@ -53,6 +53,9 @@ public class TelaSolicitar extends Tela{
   private Botao bVerificar;
   private Botao bConfirmar;
 
+  // quantidade de matérias que é possível pegar
+  private int quantSugerido;
+  private JLabel quantSugeridoLabel;
 
   public static synchronized TelaSolicitar getInstance(){
     if (instancia == null)
@@ -61,6 +64,7 @@ public class TelaSolicitar extends Tela{
   }
 
   private TelaSolicitar(){
+    quantSugerido = 5;
     this.setLayout(new BorderLayout(10,10));
     fonte = new Font("Hack", Font.BOLD, 16);
 
@@ -76,7 +80,6 @@ public class TelaSolicitar extends Tela{
     this.add(botoes, BorderLayout.PAGE_END);
 
     fazPainelCentral();
-    this.add(centralPanel, BorderLayout.CENTER);
 
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setTitle("Solicitar Matérias");
@@ -100,6 +103,7 @@ public class TelaSolicitar extends Tela{
   }
 
   private void fazPainelCentral(){
+    if(centralPanel != null) centralPanel.removeAll();
     bAdd = new Botao(">>>", fonte, this);
     bRmv = new Botao("<<<", fonte, this);
 
@@ -122,12 +126,17 @@ public class TelaSolicitar extends Tela{
     bVerificar.setAlignmentY(CENTER_ALIGNMENT);
     bConfirmar.setAlignmentY(CENTER_ALIGNMENT);
 
+    quantSugeridoLabel = new JLabel("São sugeridas " + quantSugerido + " matérias");
+    quantSugeridoLabel.setFont(fonte);
+
     centralPanel = new JPanel();
     centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
+    centralPanel.add(quantSugeridoLabel);
     centralPanel.add(bVerificar);
     centralPanel.add(bAdd);
     centralPanel.add(bRmv);
     centralPanel.add(bConfirmar);
+    this.add(centralPanel, BorderLayout.CENTER);
   }
 
   private String materiaToString(Materia mat){
@@ -151,7 +160,6 @@ public class TelaSolicitar extends Tela{
 
   private void updateScreen(){
     if(this.isVisible()){
-      this.setVisible(false);
       this.setVisible(true);
     }
   }
@@ -246,4 +254,12 @@ public class TelaSolicitar extends Tela{
   }
   // arquivo salvar
   public String getExportPath(){ return this.exportPath; }
+
+  public void setQuantSugerido(int quantSugerido){
+    this.quantSugerido = quantSugerido;
+    fazPainelCentral();
+    updateScreen();
+  }
+
+  public int getQuantSugerido() { return this.quantSugerido; }
 }
