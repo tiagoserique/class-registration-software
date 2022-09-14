@@ -7,11 +7,15 @@ public class HistoricoParser {
     
     private String historicFile;
 
-    public HistoricoParser () {}
+    private static HistoricoParser instancia = null;
 
-    public HistoricoParser (String historicFile) {
-        this.historicFile = historicFile;
+    public static synchronized HistoricoParser getInstance(){
+        if (instancia == null)
+            instancia = new HistoricoParser();
+        return instancia;
     }
+
+    private HistoricoParser () {}
 
     public void setHistoricFile(String historicFile) {
         this.historicFile = historicFile;

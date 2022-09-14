@@ -6,13 +6,17 @@ import java.util.Collections;
 
 public class MateriaParser {
 
-    private String materiasFile;
+    private String materiasFile = "../exemplos/grade-bcc-2011/exemplo_trabalho_TAP_Disciplinas_2011.csv";
 
-    public MateriaParser() {}
+    private static MateriaParser instancia = null;
 
-    public MateriaParser(String materiasFile) {
-        this.materiasFile = materiasFile;
+    public static synchronized MateriaParser getInstance(){
+        if (instancia == null)
+            instancia = new MateriaParser();
+        return instancia;
     }
+
+    private MateriaParser() {}
 
     public void setMateriasFile(String materiasFile) {
         this.materiasFile = materiasFile;
