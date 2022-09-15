@@ -80,10 +80,29 @@ public class Controller {
         return ((float) somaParcial / cargaHorariaTotal);
     }
 
+    protected int qtdMateriasAtuais(Vector<MateriaHistorico> materias) {
+        int qtd = 0;
+ 
+        qtd = calculaQuantidadeTipo(materias, MATRICULA);
+ 
+        return qtd;
+     }
+ 
+    protected int calculaMateriaSugeridas(int porcentagemAprovacao) {
+
+        if (porcentagemAprovacao >= 0.66)
+            return 5;
+        else if (porcentagemAprovacao >= 0.5)
+            return 4;
+        else
+            return 3;
+    }
+
+
     protected Vector<Materia> selecionaMaterias(Vector<Materia> materiasSolicitadas, int numeroMax) {
 
         if (materiasSolicitadas.size() <= numeroMax)
-                    return materiasSolicitadas;
+            return materiasSolicitadas;
         else {
             Vector<Materia> materiaSugeridas = new Vector<Materia>();
 
