@@ -43,7 +43,7 @@ public class TelaInicialController extends Controller implements TelaSub {
 
             // coisas da tela de estado
             // =====================================================================
-            // materias que ja foram cursadas de acordo com o periodo que foram 
+            // materias que ja foram cursadas de acor0do com o periodo que foram 
             // cursadas pelo aluno
             // armazena as materias que faltam cursar para a barreira
             Vector<Materia> matBarreira;      
@@ -93,6 +93,7 @@ public class TelaInicialController extends Controller implements TelaSub {
 
             // mostra materias que nao foram cursadas
             TelaSolicitar.getInstance().setMateriasNaoCursadasOfertadas(matNaoCursadasOfertadas);
+            TelaSolicitar.getInstance().setQuantSugerido(calculaMateriaSugeridas(matCursadas));
         }
     }
 

@@ -64,7 +64,7 @@ public class TelaSolicitar extends Tela{
   }
 
   private TelaSolicitar(){
-    quantSugerido = 5;
+    // quantSugerido = 5;
     this.setLayout(new BorderLayout(10,10));
     fonte = new Font("Hack", Font.BOLD, 16);
 
