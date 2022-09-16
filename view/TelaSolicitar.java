@@ -55,7 +55,6 @@ public class TelaSolicitar extends Tela{
   private Botao bAdd;
   private Botao bRmv;
 
-  private Botao bVerificar;
   private Botao bConfirmar;
 
   // quantidade de matérias que é possível pegar
@@ -73,7 +72,7 @@ public class TelaSolicitar extends Tela{
     this.setLayout(new BorderLayout(10,10));
     fonte = new Font("Hack", Font.BOLD, 16);
 
-    JLabel titulo = new JLabel("Selecionar matérias para solicitar, clique na ordem de prioridade (é necessário verificar antes de salvar)");
+    JLabel titulo = new JLabel("Selecionar matérias para solicitar, clique na ordem de prioridade");
     titulo.setHorizontalAlignment(SwingConstants.CENTER);
     titulo.setFont(fonte);
     this.add(titulo, BorderLayout.PAGE_START);
@@ -129,9 +128,7 @@ public class TelaSolicitar extends Tela{
     bAdd = new Botao(">>>", fonte, this);
     bRmv = new Botao("<<<", fonte, this);
 
-    bVerificar = new Botao("Verificar estado atual", fonte, this);
     bConfirmar = new Botao("Salvar pedido em um arquivo", fonte, this);
-    bConfirmar.setEnabled(false);
 
 
     quantSugeridoLabel = new JTextArea("São sugeridas " + quantSugerido + " matérias\nVocê está matriculado em " + quantAtuais + " matérias");
@@ -142,32 +139,27 @@ public class TelaSolicitar extends Tela{
 
     bAdd.      setMaximumSize(new Dimension(350, 100));
     bRmv.      setMaximumSize(new Dimension(350, 100));
-    bVerificar.setMaximumSize(new Dimension(350, 100));
     bConfirmar.setMaximumSize(new Dimension(350, 100));
-    quantSugeridoLabel.setMaximumSize(new Dimension(350, 200));
+    quantSugeridoLabel.setMaximumSize(new Dimension(350, 210));
 
     bAdd.      setMinimumSize(new Dimension(350, 100));
     bRmv.      setMinimumSize(new Dimension(350, 100));
-    bVerificar.setMinimumSize(new Dimension(350, 100));
     bConfirmar.setMinimumSize(new Dimension(350, 100));
-    quantSugeridoLabel.setMinimumSize(new Dimension(350, 200));
+    quantSugeridoLabel.setMinimumSize(new Dimension(350, 210));
 
     bAdd.      setAlignmentX(CENTER_ALIGNMENT);
     bRmv.      setAlignmentX(CENTER_ALIGNMENT);
-    bVerificar.setAlignmentX(CENTER_ALIGNMENT);
     bConfirmar.setAlignmentX(CENTER_ALIGNMENT);
     quantSugeridoLabel.setAlignmentX(CENTER_ALIGNMENT);
 
     bAdd.      setAlignmentY(CENTER_ALIGNMENT);
     bRmv.      setAlignmentY(CENTER_ALIGNMENT);
-    bVerificar.setAlignmentY(CENTER_ALIGNMENT);
     bConfirmar.setAlignmentY(CENTER_ALIGNMENT);
     quantSugeridoLabel.setAlignmentY(CENTER_ALIGNMENT);
 
     centralPanel = new JPanel();
     centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
     centralPanel.add(quantSugeridoLabel);
-    centralPanel.add(bVerificar);
     centralPanel.add(bAdd);
     centralPanel.add(bRmv);
     centralPanel.add(bConfirmar);
@@ -215,7 +207,6 @@ public class TelaSolicitar extends Tela{
       // Atualizar interface
       listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST, barraNaoCursadas);
       listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST, barraSolicitadas);
-      bConfirmar.setEnabled(false);
       updateScreen();
       return;
     } else if (source == bRmv){
@@ -229,18 +220,11 @@ public class TelaSolicitar extends Tela{
       // Atualizar interface
       listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST, barraNaoCursadas);
       listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST, barraSolicitadas);
-      bConfirmar.setEnabled(false);
       updateScreen();
       return;
     }
-    // Verificar/Salvar
-    if(source == bVerificar){
-      super.setPedido("verify");
-      this.updateSub();
-      super.setPedido("");
-      bConfirmar.setEnabled(true);
-      return;
-    } else if (source == bConfirmar){
+    // /Salvar
+    if (source == bConfirmar){
       JFileChooser arqs = new JFileChooser();
       arqs.setCurrentDirectory(new File("."));
       arqs.setFont(fonte);
