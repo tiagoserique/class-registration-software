@@ -105,16 +105,21 @@ public class TelaSolicitar extends Tela{
 
     JList<String> result = new JList<String>(demo);
     result.setFont(fonte);
+    Dimension d = result.getPreferredSize();
+    d.width = 500;
     if(scr == barraNaoCursadas){
       barraNaoCursadas = new JScrollPane(result);
+      barraNaoCursadas.setPreferredSize(d);
       this.add(barraNaoCursadas, pos);
     }
     else if(scr == barraSolicitadas){
       barraSolicitadas = new JScrollPane(result);
+      barraSolicitadas.setPreferredSize(d);
       this.add(barraSolicitadas, pos);
     }
     else{
       scr = new JScrollPane(result);
+      scr.setPreferredSize(d);
       this.add(scr, pos);
     }
     return result;
@@ -130,7 +135,7 @@ public class TelaSolicitar extends Tela{
     bConfirmar.setEnabled(false);
 
 
-    quantSugeridoLabel = new JTextArea("São sugeridas " + quantSugerido + " matérias");
+    quantSugeridoLabel = new JTextArea("São sugeridas " + quantSugerido + " matérias\nVocê está matriculado em " + quantAtuais + " matérias");
     quantSugeridoLabel.setFont(fonte);
     quantSugeridoLabel.setEditable(false);
     quantSugeridoLabel.setLineWrap(true);
@@ -141,6 +146,12 @@ public class TelaSolicitar extends Tela{
     bVerificar.setMaximumSize(new Dimension(350, 100));
     bConfirmar.setMaximumSize(new Dimension(350, 100));
     quantSugeridoLabel.setMaximumSize(new Dimension(350, 200));
+
+    bAdd.      setMinimumSize(new Dimension(350, 100));
+    bRmv.      setMinimumSize(new Dimension(350, 100));
+    bVerificar.setMinimumSize(new Dimension(350, 100));
+    bConfirmar.setMinimumSize(new Dimension(350, 100));
+    quantSugeridoLabel.setMinimumSize(new Dimension(350, 200));
 
     bAdd.      setAlignmentX(CENTER_ALIGNMENT);
     bRmv.      setAlignmentX(CENTER_ALIGNMENT);
@@ -157,39 +168,6 @@ public class TelaSolicitar extends Tela{
     centralPanel = new JPanel();
     centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
     centralPanel.add(quantSugeridoLabel);
-    centralPanel.add(bVerificar);
-    centralPanel.add(bAdd);
-    centralPanel.add(bRmv);
-    centralPanel.add(bConfirmar);
-    this.add(centralPanel, BorderLayout.CENTER);
-
-    quantAtuaisLabel = new JTextArea("Você já está matriculado em " + quantAtuais + " matérias");
-    quantAtuaisLabel.setFont(fonte);
-    quantAtuaisLabel.setEditable(false);
-    quantAtuaisLabel.setLineWrap(true);
-    quantAtuaisLabel.setBackground(new Color(0xEEEEEE));
-
-    bAdd.      setMaximumSize(new Dimension(350, 100));
-    bRmv.      setMaximumSize(new Dimension(350, 100));
-    bVerificar.setMaximumSize(new Dimension(350, 100));
-    bConfirmar.setMaximumSize(new Dimension(350, 100));
-    quantAtuaisLabel.setMaximumSize(new Dimension(350, 200));
-
-    bAdd.      setAlignmentX(CENTER_ALIGNMENT);
-    bRmv.      setAlignmentX(CENTER_ALIGNMENT);
-    bVerificar.setAlignmentX(CENTER_ALIGNMENT);
-    bConfirmar.setAlignmentX(CENTER_ALIGNMENT);
-    quantAtuaisLabel.setAlignmentX(CENTER_ALIGNMENT);
-
-    bAdd.      setAlignmentY(CENTER_ALIGNMENT);
-    bRmv.      setAlignmentY(CENTER_ALIGNMENT);
-    bVerificar.setAlignmentY(CENTER_ALIGNMENT);
-    bConfirmar.setAlignmentY(CENTER_ALIGNMENT);
-    quantAtuaisLabel.setAlignmentY(CENTER_ALIGNMENT);
-
-    centralPanel = new JPanel();
-    centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
-    centralPanel.add(quantAtuaisLabel);
     centralPanel.add(bVerificar);
     centralPanel.add(bAdd);
     centralPanel.add(bRmv);
