@@ -46,6 +46,8 @@ public class TelaEstado extends Tela{
   // informações relacionadas a aprovação do ultimo periodo
   private JPanel infoUltPeriodoPanel;
   private JLabel infoUltPeriodoLabel;
+  // IRA
+  private float ira;
   // porcentagem de aprovacao do ultimo periodo
   private Double porcentAprovacao;
   // quantidade de reprovacao do ultimo periodo
@@ -230,7 +232,7 @@ public class TelaEstado extends Tela{
     infoUltPeriodoPanel.removeAll();
     infoUltPeriodoPanel.add(infoUltPeriodoLabel, BorderLayout.PAGE_START);
 
-    String s = "<html>Porcentagem de Aprovação: " + porcentAprovacao + "%<br>"
+    String s = "<html>IRA: " + ira + "<br>" + "Porcentagem de Aprovação: " + porcentAprovacao + "%<br>"
       + "Quantidade de Reprovações por falta: " + quantidadeReprovacaoFalta + "</html";
     JLabel info = new JLabel(s, SwingConstants.CENTER);
     info.setFont(fonte);
@@ -255,6 +257,9 @@ public class TelaEstado extends Tela{
     proxTela.setVisible(true);
   }
 
+  public float getIRA(){
+    return ira; 
+  }
   public Double getPorcentAprovacao(){
     return porcentAprovacao; 
   }
@@ -268,6 +273,10 @@ public class TelaEstado extends Tela{
     return materiasCursadas;
   }
 
+  public void setIra(float ira){
+    this.ira = ira; 
+    updateInfoAprovacoes();
+  }
   public void setPorcentAprovacao(Double porcentAprovacao){
     this.porcentAprovacao = porcentAprovacao; 
     updateInfoAprovacoes();

@@ -60,7 +60,9 @@ public class TelaSolicitar extends Tela{
 
   // quantidade de matérias que é possível pegar
   private int quantSugerido;
+  private int quantAtuais;
   private JTextArea quantSugeridoLabel;
+  private JTextArea quantAtuaisLabel;
 
   public static synchronized TelaSolicitar getInstance(){
     if (instancia == null)
@@ -69,7 +71,6 @@ public class TelaSolicitar extends Tela{
   }
 
   private TelaSolicitar(){
-    // quantSugerido = 5;
     this.setLayout(new BorderLayout(10,10));
     fonte = new Font("Hack", Font.BOLD, 16);
 
@@ -156,6 +157,39 @@ public class TelaSolicitar extends Tela{
     centralPanel = new JPanel();
     centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
     centralPanel.add(quantSugeridoLabel);
+    centralPanel.add(bVerificar);
+    centralPanel.add(bAdd);
+    centralPanel.add(bRmv);
+    centralPanel.add(bConfirmar);
+    this.add(centralPanel, BorderLayout.CENTER);
+
+    quantAtuaisLabel = new JTextArea("Você já está matriculado em " + quantAtuais + " matérias");
+    quantAtuaisLabel.setFont(fonte);
+    quantAtuaisLabel.setEditable(false);
+    quantAtuaisLabel.setLineWrap(true);
+    quantAtuaisLabel.setBackground(new Color(0xEEEEEE));
+
+    bAdd.      setMaximumSize(new Dimension(350, 100));
+    bRmv.      setMaximumSize(new Dimension(350, 100));
+    bVerificar.setMaximumSize(new Dimension(350, 100));
+    bConfirmar.setMaximumSize(new Dimension(350, 100));
+    quantAtuaisLabel.setMaximumSize(new Dimension(350, 200));
+
+    bAdd.      setAlignmentX(CENTER_ALIGNMENT);
+    bRmv.      setAlignmentX(CENTER_ALIGNMENT);
+    bVerificar.setAlignmentX(CENTER_ALIGNMENT);
+    bConfirmar.setAlignmentX(CENTER_ALIGNMENT);
+    quantAtuaisLabel.setAlignmentX(CENTER_ALIGNMENT);
+
+    bAdd.      setAlignmentY(CENTER_ALIGNMENT);
+    bRmv.      setAlignmentY(CENTER_ALIGNMENT);
+    bVerificar.setAlignmentY(CENTER_ALIGNMENT);
+    bConfirmar.setAlignmentY(CENTER_ALIGNMENT);
+    quantAtuaisLabel.setAlignmentY(CENTER_ALIGNMENT);
+
+    centralPanel = new JPanel();
+    centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
+    centralPanel.add(quantAtuaisLabel);
     centralPanel.add(bVerificar);
     centralPanel.add(bAdd);
     centralPanel.add(bRmv);
@@ -286,4 +320,12 @@ public class TelaSolicitar extends Tela{
   }
 
   public int getQuantSugerido() { return this.quantSugerido; }
+
+  public void setQuantAtuais(int quantAtuais){
+    this.quantAtuais = quantAtuais;
+    fazPainelCentral();
+    updateScreen();
+  }
+
+  public int getQuantAtuais() { return this.quantAtuais; }
 }

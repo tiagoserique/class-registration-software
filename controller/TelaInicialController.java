@@ -52,6 +52,7 @@ public class TelaInicialController extends Controller implements TelaSub {
             // buscar da model que le todas as Materias da grade
             Vector<Vector<Materia>> materiasOfertadas = parserMateria.parseMaterias();
             Vector<Vector<MateriaHistorico>> matCursadas = parserHistorico.parseHistorico();
+            Vector<MateriaHistorico> matMatriculadas = null;
 
             matBarreira = filtraMateriasBarreira(materiasOfertadas);
             matNaoCursadasBarreira = filtraMateriasNaoCursadas(matBarreira, matCursadas);
@@ -65,14 +66,18 @@ public class TelaInicialController extends Controller implements TelaSub {
             // pega lista de materias do ultimo periodo
             Vector<MateriaHistorico> matUltimoPeriodo;
 
-            if ( matCursadas.get(matCursadas.size() - 1).get(0).getSituacaoItem().equals(MATRICULA) )
+            if ( matCursadas.get(matCursadas.size() - 1).get(0).getSituacaoItem().equals(MATRICULA) ) {
+                matMatriculadas = matCursadas.lastElement();
                 matUltimoPeriodo = matCursadas.get(matCursadas.size() - 2);
+            }
             else 
                 matUltimoPeriodo = matCursadas.get(matCursadas.size() - 1);
             
+            float ira = calculaIra(matCursadas)/100;
             Double porcentAprovacao = calculaPorcentAprovacao(matUltimoPeriodo); 
             int quantidadeReprovacao = calculaQuantidadeTipo(matUltimoPeriodo, REP_FALTA); 
             
+            TelaEstado.getInstance().setIra(ira);
             TelaEstado.getInstance().setPorcentAprovacao(porcentAprovacao);
             TelaEstado.getInstance().setQuantidadeReprovacaoFalta(quantidadeReprovacao);
 
@@ -93,8 +98,13 @@ public class TelaInicialController extends Controller implements TelaSub {
 
             // mostra materias que nao foram cursadas
             TelaSolicitar.getInstance().setMateriasNaoCursadasOfertadas(matNaoCursadasOfertadas);
+
+            // mostra quantidade sugeridas de materias
+            int quantSugerido = calculaMateriaSugeridas(ira, porcentAprovacao);
+            int quantAtuais = calculaQuantMateriasAtuais(matMatriculadas);
             
-            // TelaSolicitar.getInstance().setQuantSugerido(calculaMateriaSugeridas(matCursadas));
+            TelaSolicitar.getInstance().setQuantSugerido(quantSugerido);
+            TelaSolicitar.getInstance().setQuantAtuais(quantAtuais);
         }
     }
 
