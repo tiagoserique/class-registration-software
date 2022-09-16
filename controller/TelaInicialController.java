@@ -70,9 +70,11 @@ public class TelaInicialController extends Controller implements TelaSub {
             else 
                 matUltimoPeriodo = matCursadas.get(matCursadas.size() - 1);
             
+            float ira = calculaIra(matCursadas)/100;
             Double porcentAprovacao = calculaPorcentAprovacao(matUltimoPeriodo); 
             int quantidadeReprovacao = calculaQuantidadeTipo(matUltimoPeriodo, REP_FALTA); 
             
+            TelaEstado.getInstance().setIra(ira);
             TelaEstado.getInstance().setPorcentAprovacao(porcentAprovacao);
             TelaEstado.getInstance().setQuantidadeReprovacaoFalta(quantidadeReprovacao);
 
@@ -93,8 +95,11 @@ public class TelaInicialController extends Controller implements TelaSub {
 
             // mostra materias que nao foram cursadas
             TelaSolicitar.getInstance().setMateriasNaoCursadasOfertadas(matNaoCursadasOfertadas);
+
+            // mostra quantidade sugeridas de materias
+            int quantSugerido = calculaMateriaSugeridas(ira, porcentAprovacao);
             
-            // TelaSolicitar.getInstance().setQuantSugerido(calculaMateriaSugeridas(matCursadas));
+            TelaSolicitar.getInstance().setQuantSugerido(quantSugerido);
         }
     }
 

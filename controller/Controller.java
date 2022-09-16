@@ -88,14 +88,18 @@ public class Controller {
         return qtd;
      }
  
-    protected int calculaMateriaSugeridas(int porcentagemAprovacao) {
+    protected int calculaMateriaSugeridas(float ira, double porcentagemAprovacao) {
 
-        if (porcentagemAprovacao >= 0.66)
-            return 5;
-        else if (porcentagemAprovacao >= 0.5)
-            return 4;
-        else
-            return 3;
+        if (ira >= 0.8) {
+            return 6;
+        } else {
+            if (porcentagemAprovacao >= 0.66)
+                return 5;
+            else if (porcentagemAprovacao >= 0.5)
+                return 4;
+            else
+                return 3;
+        }
     }
 
 
