@@ -140,12 +140,12 @@ public class TelaSolicitar extends Tela{
     bAdd.      setMaximumSize(new Dimension(350, 100));
     bRmv.      setMaximumSize(new Dimension(350, 100));
     bConfirmar.setMaximumSize(new Dimension(350, 100));
-    quantSugeridoLabel.setMaximumSize(new Dimension(350, 210));
+    quantSugeridoLabel.setMaximumSize(new Dimension(360, 200));
 
     bAdd.      setMinimumSize(new Dimension(350, 100));
     bRmv.      setMinimumSize(new Dimension(350, 100));
     bConfirmar.setMinimumSize(new Dimension(350, 100));
-    quantSugeridoLabel.setMinimumSize(new Dimension(350, 210));
+    quantSugeridoLabel.setMinimumSize(new Dimension(360, 200));
 
     bAdd.      setAlignmentX(CENTER_ALIGNMENT);
     bRmv.      setAlignmentX(CENTER_ALIGNMENT);
