@@ -52,6 +52,7 @@ public class TelaInicialController extends Controller implements TelaSub {
             // buscar da model que le todas as Materias da grade
             Vector<Vector<Materia>> materiasOfertadas = parserMateria.parseMaterias();
             Vector<Vector<MateriaHistorico>> matCursadas = parserHistorico.parseHistorico();
+            Vector<MateriaHistorico> matMatriculadas = null;
 
             matBarreira = filtraMateriasBarreira(materiasOfertadas);
             matNaoCursadasBarreira = filtraMateriasNaoCursadas(matBarreira, matCursadas);
@@ -65,8 +66,10 @@ public class TelaInicialController extends Controller implements TelaSub {
             // pega lista de materias do ultimo periodo
             Vector<MateriaHistorico> matUltimoPeriodo;
 
-            if ( matCursadas.get(matCursadas.size() - 1).get(0).getSituacaoItem().equals(MATRICULA) )
+            if ( matCursadas.get(matCursadas.size() - 1).get(0).getSituacaoItem().equals(MATRICULA) ) {
+                matMatriculadas = matCursadas.lastElement();
                 matUltimoPeriodo = matCursadas.get(matCursadas.size() - 2);
+            }
             else 
                 matUltimoPeriodo = matCursadas.get(matCursadas.size() - 1);
             
@@ -98,8 +101,10 @@ public class TelaInicialController extends Controller implements TelaSub {
 
             // mostra quantidade sugeridas de materias
             int quantSugerido = calculaMateriaSugeridas(ira, porcentAprovacao);
+            int quantAtuais = calculaQuantMateriasAtuais(matMatriculadas);
             
             TelaSolicitar.getInstance().setQuantSugerido(quantSugerido);
+            TelaSolicitar.getInstance().setQuantAtuais(quantAtuais);
         }
     }
 

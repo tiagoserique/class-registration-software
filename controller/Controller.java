@@ -80,7 +80,7 @@ public class Controller {
         return ((float) somaParcial / cargaHorariaTotal);
     }
 
-    protected int qtdMateriasAtuais(Vector<MateriaHistorico> materias) {
+    protected int calculaQuantMateriasAtuais(Vector<MateriaHistorico> materias) {
         int qtd = 0;
  
         qtd = calculaQuantidadeTipo(materias, MATRICULA);
