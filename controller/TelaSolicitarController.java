@@ -7,21 +7,14 @@ import view.TelaSub;
 import view.Tela;
 
 import materia.Materia;
-import materia.MateriaHistorico;
-
-import model.HistoricoParser;
-import model.MateriaParser;
+import model.CsvWriter;
 
 public class TelaSolicitarController extends Controller implements TelaSub{
     private TelaSolicitar screen;
-    private HistoricoParser parserHistorico;
-    private MateriaParser parserMateria;
 
     public TelaSolicitarController(){
         this.screen = TelaSolicitar.getInstance();
         this.screen.subscribe(this);
-        this.parserHistorico = HistoricoParser.getInstance();
-        this.parserMateria = MateriaParser.getInstance();
     }
 
     public void update(Tela view){
@@ -37,7 +30,9 @@ public class TelaSolicitarController extends Controller implements TelaSub{
             System.out.println(path);
             System.out.println(materiasSolicitadas);
 
-            this.parserMateria.writeMaterias(materiasSolicitadas, path);
+            // this.parserMateria.writeMaterias(materiasSolicitadas, path);
+            CsvWriter<Materia> csvWriter = new CsvWriter<Materia>(path);
+            csvWriter.escreveArquivo(materiasSolicitadas);
         }
     }
 }

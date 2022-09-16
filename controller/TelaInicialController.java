@@ -6,7 +6,6 @@ import view.*;
 
 import materia.Materia;
 import materia.MateriaHistorico;
-import java.io.File;
 
 import model.HistoricoParser;
 import model.MateriaParser;

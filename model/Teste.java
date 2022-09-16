@@ -14,7 +14,7 @@ public class Teste {
         for (Materia materia: materias.firstElement())
             pedido.add(materia);
 
-        CsvWriter<Materia> writer = new CsvWriter<Materia>();
+        CsvWriter<Materia> writer = new CsvWriter<Materia>("pedido.csv");
         writer.escreveArquivo(pedido);
     }
 }

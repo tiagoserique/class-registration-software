@@ -62,7 +62,6 @@ public class TelaSolicitar extends Tela{
   private int quantSugerido;
   private int quantAtuais;
   private JTextArea quantSugeridoLabel;
-  private JTextArea quantAtuaisLabel;
 
   public static synchronized TelaSolicitar getInstance(){
     if (instancia == null)
