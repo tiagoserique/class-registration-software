@@ -17,10 +17,10 @@ public class Materia implements Serializable{
   private String situacao;
 
   public String toString(){
-    return (this.codCurso + "," + this.numVersao + "," + this.descrEstrutura + "," +
-        this.codDisci + "," + this.nomeUnidade + "," + this.nomeDisci + "," + 
-        this.periodo + "," + this.numHoras + "," + this.tipoDisci + "," + 
-        this.situacao + "," + this.chTotal);
+    return (this.codCurso + ";" + this.numVersao + ";" + this.descrEstrutura + ";" +
+        this.codDisci + ";" + this.nomeUnidade + ";" + this.nomeDisci + ";" + 
+        this.periodo + ";" + this.numHoras + ";" + this.tipoDisci + ";" + 
+        this.situacao + ";" + this.chTotal);
   }
   //getters
   public String getCodCurso()       { return codCurso;       }
