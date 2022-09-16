@@ -27,19 +27,18 @@ public class TelaSolicitarController extends Controller implements TelaSub{
     public void update(Tela view){
         this.screen = (TelaSolicitar) view;
 
-        if ( view.getPedido() == "export" ){
-            // =====================================================================
+        
+        // =====================================================================
+        // Permitir enviar matérias selecionadas para fazer pedido.
+        if ( view.getPedido() == "save" ){
+            String path = this.screen.getExportPath();
+
+            Vector<Materia> materiasSolicitadas = this.screen.getMateriasNaoCursadasSolicitadas();
+            System.out.println(path);
+            System.out.println(materiasSolicitadas);
             
-            // Permitir selecionar matérias que quer cursar com ordem de prioridade.
-            // Permitir enviar matérias selecionadas para fazer pedido.
-
-            // Vector<Materia> matSelecionadas = getMateriasSelecionadas();
-
-            // checa requisitos de quebra de barreira pra ver se tudo ok
-
-            // se tudo ok, salva pedido
-
-            // senao, mostra mensagem de erro
+            // TODO: descomentar quando o writeMaterias estiver completo
+            // this.parserMateria.writeMaterias(materiasSolicitadas, path);
         }
     }
 }

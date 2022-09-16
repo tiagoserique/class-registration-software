@@ -101,7 +101,7 @@ public class MateriaParser {
 
     }
 
-    public void writeMaterias(Vector<Materia> materiasPedidas) {
+    public void writeMaterias(Vector<Materia> materiasPedidas, String path) {
 
 
 
