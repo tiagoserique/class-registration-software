@@ -55,6 +55,9 @@ public class TelaEstado extends Tela{
   private final int numeroCamposC = 5;
   private final int numeroCamposB = 4;
 
+  // painel para o conteudo principal
+  JPanel centralPanel = new JPanel(new GridLayout(1, 3, 10, 10));
+
 
   private static TelaEstado instancia = null;
 
@@ -76,13 +79,14 @@ public class TelaEstado extends Tela{
     titulo.setFont(fonte);
 
     criaTabelaCursadas();
-    criaTabelaBarreira();
     criaInfoAprovacoes();
+    criaTabelaBarreira();
 
     fazBotoes();
 
     this.add(botoes, BorderLayout.PAGE_END);
     this.add(titulo, BorderLayout.PAGE_START);
+    this.add(centralPanel, BorderLayout.CENTER);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setTitle("Estado das matérias");
     this.setMinimumSize(new Dimension(500,300));
@@ -109,7 +113,7 @@ public class TelaEstado extends Tela{
     materiasCursadasSp.setFont(fonte);
     materiasCursadasPanel.add(materiasCursadasSp, BorderLayout.CENTER);
 
-    this.add(materiasCursadasPanel, BorderLayout.WEST);
+    centralPanel.add(materiasCursadasPanel, BorderLayout.WEST);
     updateTabelaCursadas();
   }
 
@@ -124,7 +128,7 @@ public class TelaEstado extends Tela{
     materiasBarreiraSp.setFont(fonte);
     materiasBarreiraPanel.add(materiasBarreiraSp, BorderLayout.CENTER);
 
-    this.add(materiasBarreiraPanel, BorderLayout.EAST);
+    centralPanel.add(materiasBarreiraPanel, BorderLayout.EAST);
     updateTabelaBarreira();
   }
 
@@ -170,7 +174,7 @@ public class TelaEstado extends Tela{
   // Transforma materia em vetor de Strings
   private String[] fromMateriaToString(MateriaHistorico mat, int periodo){
     String[] res = new String[numeroCamposC];
-    res[0] = mat.getCodCurso();
+    res[0] = mat.getCodAtivCurric();
     res[1] = mat.getNomeAtivCurri();
     res[2] = mat.getMediaFinal();
     res[3] = mat.getChTotal();
@@ -182,7 +186,7 @@ public class TelaEstado extends Tela{
     String[] res = new String[numeroCamposB];
     res[0] = mat.getCodDisci();
     res[1] = mat.getNomeDisci();
-    res[2] = Integer.toString(mat.getChTotal());
+    res[2] = Integer.toString(mat.getNumHoras());
     res[3] = mat.getPeriodo() <= 8 ? Integer.toString(mat.getPeriodo()) : "Optativa";
     return res;
   }
@@ -218,7 +222,7 @@ public class TelaEstado extends Tela{
     infoUltPeriodoLabel = new JLabel("Informações sobre o último período:", SwingConstants.CENTER);
     infoUltPeriodoLabel.setFont(fonte);
 
-    this.add(infoUltPeriodoPanel, BorderLayout.CENTER);
+    centralPanel.add(infoUltPeriodoPanel, BorderLayout.CENTER);
     updateInfoAprovacoes();
   }
 

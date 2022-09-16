@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -15,6 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 import materia.Materia;
@@ -45,6 +48,8 @@ public class TelaSolicitar extends Tela{
   private Vector<Materia> materiasNaoCursadasSolicitadas = new Vector<Materia>();
   private JList<String> listNaoCursadas;
   private JList<String> listSolicitadas;
+  private JScrollPane barraNaoCursadas;
+  private JScrollPane barraSolicitadas;
 
   private JPanel centralPanel;
   private Botao bAdd;
@@ -55,7 +60,7 @@ public class TelaSolicitar extends Tela{
 
   // quantidade de matérias que é possível pegar
   private int quantSugerido;
-  private JLabel quantSugeridoLabel;
+  private JTextArea quantSugeridoLabel;
 
   public static synchronized TelaSolicitar getInstance(){
     if (instancia == null)
@@ -73,8 +78,8 @@ public class TelaSolicitar extends Tela{
     titulo.setFont(fonte);
     this.add(titulo, BorderLayout.PAGE_START);
 
-    listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
-    listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
+    listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST, barraNaoCursadas);
+    listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST, barraSolicitadas);
 
     fazBotoes();
     this.add(botoes, BorderLayout.PAGE_END);
@@ -86,10 +91,11 @@ public class TelaSolicitar extends Tela{
     this.setMinimumSize(new Dimension(500,300));
   }
 
-  private JList<String> geraLista(JList<String> lista, Vector<Materia> materias, String pos){
+  private JList<String> geraLista(JList<String> lista, Vector<Materia> materias, String pos, JScrollPane scr){
     if(materias == null) return lista;
-    if(lista != null){
-      this.remove(lista);
+    if(lista != null && scr != null){
+      scr.remove(lista);
+      this.remove(scr);
     }
 
     DefaultListModel<String> demo = new DefaultListModel<String>();
@@ -98,7 +104,18 @@ public class TelaSolicitar extends Tela{
 
     JList<String> result = new JList<String>(demo);
     result.setFont(fonte);
-    this.add(result, pos);
+    if(scr == barraNaoCursadas){
+      barraNaoCursadas = new JScrollPane(result);
+      this.add(barraNaoCursadas, pos);
+    }
+    else if(scr == barraSolicitadas){
+      barraSolicitadas = new JScrollPane(result);
+      this.add(barraSolicitadas, pos);
+    }
+    else{
+      scr = new JScrollPane(result);
+      this.add(scr, pos);
+    }
     return result;
   }
 
@@ -111,23 +128,30 @@ public class TelaSolicitar extends Tela{
     bConfirmar = new Botao("Salvar pedido em um arquivo", fonte, this);
     bConfirmar.setEnabled(false);
 
-    bAdd.      setMaximumSize(new Dimension(300, 100));
-    bRmv.      setMaximumSize(new Dimension(300, 100));
-    bVerificar.setMaximumSize(new Dimension(300, 100));
-    bConfirmar.setMaximumSize(new Dimension(300, 100));
+
+    quantSugeridoLabel = new JTextArea("São sugeridas " + quantSugerido + " matérias");
+    quantSugeridoLabel.setFont(fonte);
+    quantSugeridoLabel.setEditable(false);
+    quantSugeridoLabel.setLineWrap(true);
+    quantSugeridoLabel.setBackground(new Color(0xEEEEEE));
+
+    bAdd.      setMaximumSize(new Dimension(350, 100));
+    bRmv.      setMaximumSize(new Dimension(350, 100));
+    bVerificar.setMaximumSize(new Dimension(350, 100));
+    bConfirmar.setMaximumSize(new Dimension(350, 100));
+    quantSugeridoLabel.setMaximumSize(new Dimension(350, 200));
 
     bAdd.      setAlignmentX(CENTER_ALIGNMENT);
     bRmv.      setAlignmentX(CENTER_ALIGNMENT);
     bVerificar.setAlignmentX(CENTER_ALIGNMENT);
     bConfirmar.setAlignmentX(CENTER_ALIGNMENT);
+    quantSugeridoLabel.setAlignmentX(CENTER_ALIGNMENT);
 
     bAdd.      setAlignmentY(CENTER_ALIGNMENT);
     bRmv.      setAlignmentY(CENTER_ALIGNMENT);
     bVerificar.setAlignmentY(CENTER_ALIGNMENT);
     bConfirmar.setAlignmentY(CENTER_ALIGNMENT);
-
-    quantSugeridoLabel = new JLabel("São sugeridas " + quantSugerido + " matérias");
-    quantSugeridoLabel.setFont(fonte);
+    quantSugeridoLabel.setAlignmentY(CENTER_ALIGNMENT);
 
     centralPanel = new JPanel();
     centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
@@ -178,8 +202,8 @@ public class TelaSolicitar extends Tela{
       materiasNaoCursadasOfertadas.remove(selecionada);
       materiasNaoCursadasSolicitadas.add(selecionada);
       // Atualizar interface
-      listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
-      listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
+      listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST, barraNaoCursadas);
+      listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST, barraSolicitadas);
       bConfirmar.setEnabled(false);
       updateScreen();
       return;
@@ -192,8 +216,8 @@ public class TelaSolicitar extends Tela{
       materiasNaoCursadasOfertadas.add(selecionada);
       materiasNaoCursadasSolicitadas.remove(selecionada);
       // Atualizar interface
-      listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
-      listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
+      listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST, barraNaoCursadas);
+      listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST, barraSolicitadas);
       bConfirmar.setEnabled(false);
       updateScreen();
       return;
@@ -240,7 +264,7 @@ public class TelaSolicitar extends Tela{
   }
   public void setMateriasNaoCursadasOfertadas(Vector<Materia> materiasNaoCursadasOfertadas) {
     this.materiasNaoCursadasOfertadas = materiasNaoCursadasOfertadas;
-    listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST);
+    listNaoCursadas = geraLista(listNaoCursadas, materiasNaoCursadasOfertadas, BorderLayout.WEST, barraNaoCursadas);
     updateScreen();
   }
   // referente a grade de materias ofertadas por periodo que serão solicitadas
@@ -249,7 +273,7 @@ public class TelaSolicitar extends Tela{
   }
   public void setMateriasNaoCursadasSolicitadas(Vector<Materia> materiasNaoCursadasSolicitadas) {
     this.materiasNaoCursadasSolicitadas = materiasNaoCursadasSolicitadas;
-    listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST);
+    listSolicitadas = geraLista(listSolicitadas, materiasNaoCursadasSolicitadas, BorderLayout.EAST, barraSolicitadas);
     updateScreen();
   }
   // arquivo salvar
