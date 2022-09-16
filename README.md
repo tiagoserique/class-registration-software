@@ -1,5 +1,11 @@
 # trabalho-paradigmas
 
+Feito por:
+- Iago Mello Floriano
+- Luan Machado Bernardt
+- Arthur Henrique Canello Vilar
+- Tiago Serique Valadares
+
 
 ## Objetivos:
 
@@ -31,6 +37,13 @@
 
 # Pra compilar 
 
-make dentro do diretorio materia
+```shell
+./compilaTudo.sh
+```
 
-make run no diretorio de view
+# Para rodar
+
+```shell
+cd controller
+make run
+```
