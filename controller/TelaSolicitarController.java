@@ -36,9 +36,8 @@ public class TelaSolicitarController extends Controller implements TelaSub{
             Vector<Materia> materiasSolicitadas = this.screen.getMateriasNaoCursadasSolicitadas();
             System.out.println(path);
             System.out.println(materiasSolicitadas);
-            
-            // TODO: descomentar quando o writeMaterias estiver completo
-            // this.parserMateria.writeMaterias(materiasSolicitadas, path);
+
+            this.parserMateria.writeMaterias(materiasSolicitadas, path);
         }
     }
 }
