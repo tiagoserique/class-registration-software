@@ -6,7 +6,7 @@ import java.util.Collections;
 
 public class MateriaParser {
 
-    private String materiasFile = "exemplos/grade-bcc-2019/exemplo_trabalho_TAP_Disciplinas_2019.csv";
+    private String materiasFile = "../exemplos/grade-bcc-2019/exemplo_trabalho_TAP_Disciplinas_2019.csv";
 
     private static MateriaParser instancia = null;
 

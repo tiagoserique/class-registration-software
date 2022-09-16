@@ -93,7 +93,8 @@ public class TelaInicialController extends Controller implements TelaSub {
 
             // mostra materias que nao foram cursadas
             TelaSolicitar.getInstance().setMateriasNaoCursadasOfertadas(matNaoCursadasOfertadas);
-            TelaSolicitar.getInstance().setQuantSugerido(calculaMateriaSugeridas(matCursadas));
+            
+            // TelaSolicitar.getInstance().setQuantSugerido(calculaMateriaSugeridas(matCursadas));
         }
     }
 
