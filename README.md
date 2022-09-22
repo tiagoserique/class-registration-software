@@ -48,3 +48,11 @@ Made by:
 cd controller
 make run
 ```
+
+## Screen pictures
+
+![home-screen](img/home-screen.png)
+
+![class-state-screen](img/class-state-screen.png)
+
+![select-class-screen](img/select-class-screen.png)
